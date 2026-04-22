@@ -7,11 +7,12 @@ import About    from './components/about/about'
 import Skills   from './components/skills/skills'
 import Projects from './components/projects/projects'
 import Footer   from './components/footer/footer'
+import { useEasterEggs } from './hooks/useEasterEggs'
 
 function App() {
   const { dotRef, ringRef } = useCustomCursor()
   useInkSpot(dotRef, ringRef)
-
+  useEasterEggs()
   return (
     <>
       <div className="cursor-dot"  ref={dotRef}  />

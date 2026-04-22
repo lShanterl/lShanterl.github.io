@@ -75,7 +75,7 @@ export default function Skills() {
   return (
     <section className="skills section-wrapper" id="skills">
       <motion.div {...fadeUp(0)}>
-        <p className="skills-tag">skills.cpp — tech_stack::config</p>
+        <p className="skills-tag">skills.cpp - tech_stack::config</p>
         <h2 className="skills-title">
           What I work<br />
           <span className="marked">with</span>
@@ -85,7 +85,7 @@ export default function Skills() {
       <motion.div className="skills-desc" {...fadeUp(0.1)}>
         I specialize in Memory-Safe Systems <strong>Rust</strong> and High-Performance <strong>C++</strong>. 
         From understanding of the graphics pipeline to architecting complex game logic in Godot and Unreal Engine. 
-        My experience in <strong>Industry 4.0 Digital Twins and Healthcare IT</strong> has taught me to write code where <strong>reliability</strong> is not optional.
+        My experience in <strong>Industry 4.0 Digital Twins and Healthcare IT</strong> has taught me to write code write code where <strong>"it works on my machine"</strong> isn't an acceptable answer.
       </motion.div>
 
       {CATEGORIES.map((cat, ci) => (

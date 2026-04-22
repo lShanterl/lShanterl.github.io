@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
-const NORMAL_LERP_FACTOR = 0.3
-const HOVER_LERP_FACTOR = 0.5
+const NORMAL_LERP_FACTOR = 0.5
+const HOVER_LERP_FACTOR = 0.7
 
 export function useCustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)

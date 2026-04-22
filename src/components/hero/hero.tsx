@@ -8,11 +8,11 @@ type TLine =
 
 const SCRIPT: TLine[] = [
   { kind: 'cmd', text: 'whoami' },
-  { kind: 'out', text: 'Bartosz Starzyk — systems & embedded dev, PL' },
-  { kind: 'cmd', text: 'cat focus.txt' },
-  { kind: 'out', text: 'C++ · Rust · Embedded · OpenGL · Game Dev' },
+  { kind: 'out', text: 'Bartosz Starzyk - systems & embedded dev, PL' },
+  { kind: 'cmd', text: 'git push origin main --force' },
+  { kind: 'out', text: 'Everything up-to-date (There will be consequences)', },
   { kind: 'cmd', text: 'ls ./hardware' },
-  { kind: 'out', text: 'Raspberry-Pi-Pico/  custom-PCBs/  STM32/' },
+  { kind: 'out', text: 'Raspberry-Pi-Pico/  STM32/  broken_breadboards/' },
   { kind: 'cmd', text: 'echo $STATUS' },
   { kind: 'out', text: '[✓] Open to new opportunities', success: true },
 ]
@@ -43,13 +43,15 @@ function useTerminal() {
         })
 
         if (char.current < current.text.length) {
-          t = setTimeout(tick, 40 + Math.random() * 30)
+          t = setTimeout(tick, 20 + Math.random() * 100)
         } else {
-          setLines(prev => {
-            const last = prev[prev.length - 1]
-            if (!last) return prev
-            return [...prev.slice(0, -1), { ...last, done: true }]
-          })
+            setLines(prev => {
+              const last = prev[prev.length - 1];
+              if (last?.kind === 'cmd') {
+                return [...prev.slice(0, -1), { ...last, text: current.text, done: true }];
+              }
+              return prev;
+            });
           char.current = 0
           idx.current++
           t = setTimeout(tick, 220)
@@ -73,7 +75,7 @@ function useTerminal() {
 }
 
 export default function Hero() {
-  const { lines, busy } = useTerminal()
+  const { lines } = useTerminal()
 
   return (
     <section className="hero" id="hero">
@@ -106,7 +108,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
           >
-            <strong>Systems & Embedded Developer</strong> from Poland. I architect high-performance solutions in C++ and Rust, focusing on the intersection of hardware and software. From OpenGL renderers and custom game engines to Industry 4.0 digital twins and medical-grade deployments - I thrive <em>below</em> the abstraction layer
+            <strong>Systems & Embedded Developer</strong> from Poland. 
+            I architect high-performance solutions in C++ and Rust, focusing on the volatile space where hardware meets software. 
+            From OpenGL renderers to medical-grade deployments I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters
           </motion.p>
 
           <motion.div
@@ -128,6 +132,7 @@ export default function Hero() {
           >
             <a className="btn-primary" href="#projects">./view-projects</a>
             <a className="btn-ghost"   href="#contact">get_in_touch()</a>
+            {/* <span className="cta-note">// No garbage collector was used here</span> */}
           </motion.div>
         </div>
 
@@ -141,7 +146,7 @@ export default function Hero() {
             <span className="terminal-dot red"    />
             <span className="terminal-dot yellow" />
             <span className="terminal-dot green"  />
-            <span className="terminal-path">~/portfolio/shanter — zsh</span>
+            <span className="terminal-path">~/portfolio/shanter - zsh</span>
           </div>
 
           <div className="terminal-body">
@@ -162,15 +167,8 @@ export default function Hero() {
               </div>
             ))}
 
-            {busy && (
-              <div className="t-line">
-                <span className="t-prompt">
-                  <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
-                </span>
-                <span className="t-cursor" />
-              </div>
-            )}
           </div>
+
         </motion.div>
       </div>
 

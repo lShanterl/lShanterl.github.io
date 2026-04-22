@@ -59,6 +59,9 @@
 .pcard.wide {
   grid-column: span 2;
 }
+.pcard.tall {
+  grid-row: span 2;
+}
 
 .pcard-tab {
   display: flex;
@@ -204,6 +207,7 @@
   }
   .pcard.featured { grid-column: span 2; grid-row: span 1; }
   .pcard.wide     { grid-column: span 2; }
+  .pcard.tall { grid-row: span 1; }
 }
 @media (max-width: 600px) {
   .bento {
@@ -211,6 +215,7 @@
     grid-auto-rows: 260px;
   }
   .pcard.featured, .pcard.wide { grid-column: span 1; }
+  .pcard.tall { grid-column: span 1; grid-row: span 1; }
 }
 
 @media (hover: none), (pointer: coarse) {

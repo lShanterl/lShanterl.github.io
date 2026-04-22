@@ -229,6 +229,27 @@
   50%       { opacity: 0; }
 }
 
+body.rust-mode {
+  --marked-color: #f74c00; 
+  --terminal-accent: #f74c00;
+}
+
+body.rust-mode .marked {
+  color: var(--marked-color);
+  text-shadow: 0 0 15px rgba(247, 76, 0, 0.4);
+}
+
+body.rust-mode .hero-pill {
+  border-color: var(--marked-color);
+  color: var(--marked-color);
+}
+
+body.rust-mode .terminal-path::after {
+  content: " — [RUST ENABLED 🦀]";
+  color: #f74c00;
+  font-weight: bold;
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 32px;
