@@ -1,0 +1,112 @@
+@import url('../variables.css');
+
+.skills {
+  padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 100px);
+  position: relative;
+  z-index: 2;
+}
+
+.skills::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin-bottom: clamp(80px, 12vh, 160px);
+}
+
+.skills-title {
+  font-size: clamp(36px, 5.5vw, 80px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 60px;
+  color: var(--text);
+  line-height: 1.05;
+}
+.skills-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.skill-category {
+  margin-bottom: 52px;
+}
+
+.skill-import {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 13px);
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 2px solid var(--purple-dim);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.si-kw   { color: #C792EA; }
+.si-brace { color: var(--text-dim); }
+.si-name { color: var(--cyan); }
+.si-path { color: #C3E88D; }
+.si-comment { color: #546E7A; font-style: italic; }
+
+.skill-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+}
+.skill-chip:hover {
+  border-color: var(--border-active);
+  color: var(--text);
+  background: var(--bg-card-2);
+  transform: translateY(-2px);
+}
+.skill-chip img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+}
+
+.skills-desc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px 32px;
+  margin-bottom: 52px;
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: var(--text-dim);
+  line-height: 1.75;
+  font-family: var(--font-mono);
+  border-left: 3px solid var(--cyan);
+  position: relative;
+}
+.skills-desc::before {
+  content: 'current focus';
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.skills-desc strong { color: var(--text); }
+
+@media (max-width: 640px) {
+  .skill-import { font-size: 11px; }
+}

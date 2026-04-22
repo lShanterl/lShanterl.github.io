@@ -1,0 +1,131 @@
+@import url('../variables.css');
+
+.about {
+  padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 100px);
+  position: relative;
+  z-index: 2;
+}
+
+.about-header {
+  margin-bottom: clamp(48px, 7vw, 80px);
+}
+.about-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.about-title {
+  font-size: clamp(36px, 5.5vw, 80px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+  max-width: 1200px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--purple), var(--cyan));
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.stat-card:hover { border-color: var(--border-active); background: var(--bg-card-2); }
+.stat-card:hover::before { opacity: 1; }
+
+.stat-value {
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--purple-light) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+}
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bio-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px 32px;
+}
+.bio-block-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--purple-light);
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+.bio-block p {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--text-dim);
+  line-height: 1.75;
+}
+.bio-block p strong { color: var(--text); font-weight: 600; }
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.about-tag-pill {
+  padding: 5px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition: border-color 0.2s, color 0.2s;
+}
+.about-tag-pill:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-stats { flex-direction: row; flex-wrap: wrap; }
+  .stat-card { flex: 1; min-width: 140px; }
+}
+@media (max-width: 640px) {
+  .about-stats { flex-direction: column; }
+}
