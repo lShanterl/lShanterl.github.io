@@ -1,45 +1,37 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import './toast.css'
 
-export default function Toast() {
-  const [message, setMessage]   = useState<string | null>(null)
-  const [visible, setVisible]   = useState(false)
-  const [leaving, setLeaving]   = useState(false)
-  const activeRef               = useRef(false)
 
-  const dismiss = useCallback(() => {
-    setLeaving(true)
+export default function Toast() {
+  const [toasts, setToasts] = useState<{ id: number; text: string }[]>([]);
+
+  const addToast = useCallback((text: string) => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, text }]);
+    
+    //reomve after 3s
     setTimeout(() => {
-      setLeaving(false)
-      setVisible(false)
-      setMessage(null)
-      activeRef.current = false
-    }, 500)
-  }, [])
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 3000);
+  }, []);
 
   useEffect(() => {
-    const handler = (e: Event) => {
-      if (activeRef.current) return
-      const text = (e as CustomEvent<string>).detail
-      if (!text) return
+    const handler = (e: any) => addToast(e.detail);
+    window.addEventListener('toast_notify', handler);
+    return () => window.removeEventListener('toast_notify', handler);
+  }, [addToast]);
 
-      activeRef.current = true
-      setMessage(text)
-      setVisible(true)
-      setLeaving(false)
+  if (toasts.length === 0) return null;
 
-      setTimeout(dismiss, 2600)
-    }
-
-    window.addEventListener('toast', handler)
-    return () => window.removeEventListener('toast', handler)
-  }, [dismiss])
-
-  if (!visible || !message) return null
-
-  return (
-    <div className={`toast`}>
-      {message}
-    </div>
-  )
+    return createPortal(
+    <div className="toast">
+      {toasts.map((toast) => (
+        <div key={toast.id} className="toast-item animate-in">
+          {toast.text}
+        </div>
+      ))}
+    </div>,
+    document.body
+  );
 }

@@ -1,3 +1,3 @@
 export function triggerBSOD() {
-  window.dispatchEvent(new CustomEvent('bsod'))
+  window.dispatchEvent(new CustomEvent('trigger_bsod'))
 }
