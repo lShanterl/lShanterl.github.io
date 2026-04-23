@@ -1,3 +1,4 @@
+import { showToast } from '../../hooks/useToast'
 import './footer.css'
 import { motion } from 'framer-motion'
 
@@ -18,6 +19,11 @@ const LinkedInIcon = () => (
     <circle cx="4" cy="4" r="2" />
   </svg>
 )
+
+const onClickEmail = () => {
+  navigator.clipboard.writeText('barteksta00@gmail.com')
+    .then(() => showToast('Email copied to clipboard, good choice!'))
+}
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -66,7 +72,7 @@ export default function Footer() {
           <a className="social-btn" href="https://github.com/lShanterl" target="_blank" rel="noreferrer">
             <GitHubIcon /> GitHub
           </a>
-          <a className="social-btn" href="mailto:barteksta00@gmail.com">
+          <a className="social-btn" onClick={onClickEmail}>
             <MailIcon /> Email
           </a>
           <a className="social-btn" href="https://www.linkedin.com/in/bartosz-starzyk-1372ab249/" target="_blank" rel="noreferrer">

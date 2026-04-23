@@ -1,0 +1,14 @@
+@keyframes toastIn {
+  0% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.toast{
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+  background: rgba(4, 4, 13, 0.97); border: 1px solid rgba(147, 51, 234, 0.55);
+  border-radius: 8px; padding: 12px 22px; color: #A855F7; z-index: 99999;
+  font-family: "JetBrains Mono", monospace; font-size: 13px;
+  white-space: pre-line; box-shadow: 0 0 28px rgba(147, 51, 234, 0.4);
+  animation: toastIn 0.3s ease; pointer-events: none;
+}
+

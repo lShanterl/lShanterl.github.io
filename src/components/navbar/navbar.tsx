@@ -27,16 +27,31 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const [pct, setPct] = useState(0)
+
+  useEffect(() => {
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    setPct(Math.round((window.scrollY / max) * 100))
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const tabHref = (href: string) =>
     TABS.find(t => t.href === `#${active}`)?.href === href
 
   return (
     <>
       <nav className="navbar">
+    
+      <div className='navbar-percentage-actual' style={{ width: `${pct}%` }}/>
+        
         <a className="nav-logo" href="#">
           <span className="nav-logo-dot" />
           ~/shanter
         </a>
+        
 
         <div className="nav-tabs">
           {TABS.map(tab => (
@@ -49,6 +64,10 @@ export default function Navbar() {
               {tab.label}
             </a>
           ))}
+
+        </div>
+        <div className="nav-progress"> 
+          <span className='nav-progress-percentage'>{pct}%</span>
         </div>
 
         <button
@@ -58,6 +77,7 @@ export default function Navbar() {
         >
           <span /><span /><span />
         </button>
+
       </nav>
 
       <AnimatePresence>

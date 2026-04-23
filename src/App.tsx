@@ -8,6 +8,8 @@ import Skills   from './components/skills/skills'
 import Projects from './components/projects/projects'
 import Footer   from './components/footer/footer'
 import { useEasterEggs } from './hooks/useEasterEggs'
+import Toast from './components/toast/toast'
+import Bsod from './components/bsod/bsod'
 
 function App() {
   const { dotRef, ringRef } = useCustomCursor()
@@ -25,6 +27,8 @@ function App() {
         <Skills />
         <Projects />
         <Footer />
+        <Toast />
+        <Bsod />
       </div>
     </>
   )

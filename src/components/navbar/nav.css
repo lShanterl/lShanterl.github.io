@@ -84,7 +84,24 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
-
+.navbar-percentage-actual {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  transition: linear;
+}
+.nav-progress{
+  display: flex;
+  align-items: center;
+}
+.nav-progress-percentage{
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--purple-light);
+  padding: 0 16px;
+  margin-left: auto;
+}
 .nav-hamburger {
   display: none;
   flex-direction: column;

@@ -41,7 +41,7 @@ export default function About() {
             <p className="bio-block-tag">/** intro **/</p>
             <p>
               I'm <strong>Bartosz Starzyk</strong>, a Software Developer focused on bridging the gap between hardware and high-performance software.
-               I’ve been crafting code since 2020, evolving from simple scripts to production-ready systems for the medical and energy sectors even.
+               I’ve been crafting code since 2020, evolving from simple scripts to production-ready systems for the medical and energy sectors.
             </p>
           </motion.div>
 
@@ -53,7 +53,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.div className="bio-block" {...fadeUp(0.36)}>
+          <motion.div className="bio-block" {...fadeUp(0.29)}>
             <p className="bio-block-tag">/** industrial experience **/</p>
             <p><strong>Software & QA Intern @ Digital Technology Poland</strong> <br />
             Worked on Digital Twin solutions for the energy sector. I was responsible for automating E2E testing pipelines using <strong>Playwright</strong> and integrating E-CAD/CAD data flows. This role sharpened my focus on Industry 4.0 standards, regression testing, and high-reliability software architectures because in the energy sector, "undefined behavior" isn't just a bug; it's a crisis.
@@ -61,7 +61,7 @@ export default function About() {
           </motion.div>
             
 
-          <motion.div className="bio-block" {...fadeUp(0.29)}>
+          <motion.div className="bio-block" {...fadeUp(0.36)}>
             <p className="bio-block-tag">/** interests **/</p>
             <div className="about-tags">
               {INTERESTS.map(tag => (
