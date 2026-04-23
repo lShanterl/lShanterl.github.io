@@ -36,6 +36,12 @@
 }
 .footer-sig-sub span { color: var(--green); }
 
+.footer-sig-time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -104,6 +110,11 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+.vertical{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .footer-bottom .kw      { color: #C792EA; }
 .footer-bottom .str     { color: #C3E88D; }
 
@@ -134,3 +145,4 @@
     flex-wrap: wrap;
   }
 }
+

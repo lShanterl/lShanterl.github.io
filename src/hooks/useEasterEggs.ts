@@ -9,7 +9,6 @@ const CONFIG = {
 
 const TRIGGER_RESPONSES: Record<string, string> = {
   'hello':       '> hello there, human.',
-  'sudo rm -rf': '> absolutely not.',
   'sudo':        '> nice try. permission denied.',
   'hack':        '> accessing mainframe...\n> just kidding.',
   'vim':         '> good luck getting out of here.',

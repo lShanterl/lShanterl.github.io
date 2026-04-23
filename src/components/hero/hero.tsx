@@ -110,7 +110,7 @@ export default function Hero() {
           >
             <strong>Systems & Embedded Developer</strong> from Poland. 
             I architect high-performance solutions in C++ and Rust, focusing on the volatile space where hardware meets software. 
-            From OpenGL renderers to medical-grade deployments I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters
+            From OpenGL renderers to medical-grade deployments I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters.
           </motion.p>
 
           <motion.div

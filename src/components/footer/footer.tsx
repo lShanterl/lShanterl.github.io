@@ -1,6 +1,7 @@
 import { showToast } from '../../hooks/useToast'
 import './footer.css'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
@@ -22,7 +23,27 @@ const LinkedInIcon = () => (
 
 const onClickEmail = () => {
   navigator.clipboard.writeText('barteksta00@gmail.com')
-    .then(() => showToast('Email copied to clipboard, good choice!'))
+    .then(() => showToast('> Email copied to clipboard, good choice!'))
+}
+
+function useLocalTime() {
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    const update = () => {
+      setTime(new Date().toLocaleTimeString('en-GB', {
+        timeZone: 'Europe/Warsaw',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      }))
+    }
+    update()
+    const id = setInterval(update, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  return time
 }
 
 export default function Footer() {
@@ -43,6 +64,9 @@ export default function Footer() {
           </div>
           <div className="footer-sig-sub">
             status: <span>● available</span>
+          </div>
+          <div className="footer-sig-time">
+            local time: <span>{useLocalTime()}</span>
           </div>
         </motion.div>
 
@@ -75,23 +99,24 @@ export default function Footer() {
           <a className="social-btn" onClick={onClickEmail}>
             <MailIcon /> Email
           </a>
-          <a className="social-btn" href="https://www.linkedin.com/in/bartosz-starzyk-1372ab249/" target="_blank" rel="noreferrer">
+          <a className="social-btn" href="https://www.linkedin.com/in/shanterbs/" target="_blank" rel="noreferrer">
             <LinkedInIcon /> LinkedIn
           </a>
         </motion.div>
       </div>
 
       <div className="footer-bottom">
-        <span>
+          <span>
           <span className="kw">const</span>
           {' year = '}
           <span className="str">{year}</span>
           {'  © Bartosz Starzyk'}
-        </span>
+          </span>
         <span>
           built with React + Framer Motion + some love
         </span>
       </div>
+      
     </footer>
   )
 }

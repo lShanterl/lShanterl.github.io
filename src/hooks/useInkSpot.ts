@@ -5,6 +5,7 @@ const INK_SELECTOR = [
   '.skill-chip', '.social-btn', '.about-tag-pill',
   '.stat-card', '.bio-block',
   '.nav-tab', '.btn-primary', '.btn-ghost', '.pcard', '.pcard-open',
+  '.social-btn', '.footer-link-row a',
 ].join(', ')
 
 export function useInkSpot(dotRef: RefObject<HTMLDivElement | null>, ringRef: RefObject<HTMLDivElement | null>) {
