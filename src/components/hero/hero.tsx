@@ -119,7 +119,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.45 }}
           >
-            {['C++', 'Rust', 'Embedded', 'OpenGL', 'Game Dev'].map(tag => (
+            {['C++', 'Rust', 'Embedded', 'Game Dev'].map(tag => (
               <span className="hero-pill" key={tag}>{tag}</span>
             ))}
           </motion.div>
