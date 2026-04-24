@@ -32,7 +32,7 @@ export default function Navbar() {
   useEffect(() => {
   const onScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight
-    setPct(Math.round((window.scrollY / max) * 100))
+    setPct((window.scrollY / max) * 100)
   }
   window.addEventListener('scroll', onScroll, { passive: true })
   return () => window.removeEventListener('scroll', onScroll)
@@ -67,7 +67,7 @@ export default function Navbar() {
 
         </div>
         <div className="nav-progress"> 
-          <span className='nav-progress-percentage'>{pct}%</span>
+          <span className='nav-progress-percentage'>{pct.toFixed(0)}%</span>
         </div>
 
         <button
