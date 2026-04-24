@@ -81,25 +81,27 @@ export default function Skills() {
           <span className="marked">with</span>
         </h2>
       </motion.div>
-
+      <motion.div className='skills-flex'>
+        
       <motion.div className="skills-desc" {...fadeUp(0.1)}>
         I specialize in Memory-Safe Systems <strong>Rust</strong> and High-Performance <strong>C++</strong>. 
         From understanding of the graphics pipeline to architecting game logic in Godot and Unreal Engine. 
         My experience in <strong>Industry 4.0 Digital Twins and Healthcare IT</strong> has taught me to write code where <strong>"it works on my machine"</strong> isn't an acceptable answer.
       </motion.div>
 
+      <motion.div className="skills-items" {...fadeUp(0.2)}>
       {CATEGORIES.map((cat, ci) => (
         <motion.div className="skill-category" key={cat.title} {...fadeUp(0.1 + ci * 0.1)}>
           <ImportLine raw={cat.importStr} />
           <div className="skill-icons">
             {cat.skills.map((sk, si) => (
               <motion.div
-                className="skill-chip"
-                key={sk.name}
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: 0.05 + si * 0.05 }}
+              className="skill-chip"
+              key={sk.name}
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.05 + si * 0.05 }}
               >
                 <img src={sk.img} alt={sk.name} />
                 {sk.name}
@@ -108,6 +110,8 @@ export default function Skills() {
           </div>
         </motion.div>
       ))}
+      </motion.div>
+      </motion.div>
     </section>
   )
 }

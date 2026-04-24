@@ -29,7 +29,7 @@
   grid-template-columns: 1fr 1.9fr;
   gap: clamp(32px, 5vw, 80px);
   align-items: start;
-  max-width: 1200px;
+  max-width: 1480px;
 }
 
 .about-stats {
@@ -120,6 +120,20 @@
   transition: border-color 0.2s, color 0.2s;
 }
 .about-tag-pill:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+@media (min-width: 1440px) {
+  .about-tag { font-size: 0.86rem; }
+  .stat-label { font-size: 0.9rem; }
+  .bio-block-tag { font-size: 0.8rem; }
+  .about-tag-pill { font-size: 0.82rem; }
+}
+
+@media (min-width: 1920px) {
+  .about-tag { font-size: 0.92rem; }
+  .stat-label { font-size: 0.96rem; }
+  .bio-block-tag { font-size: 0.86rem; }
+  .about-tag-pill { font-size: 0.88rem; }
+}
 
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; }

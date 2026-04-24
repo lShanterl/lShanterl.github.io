@@ -56,7 +56,6 @@ body {
 }
 
 .is-cursor-hovered {
-  transform: translateZ(0) scale(1.018);
   transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.12s ease-out, border-color 0.12s ease-out, background-color 0.12s ease-out;
 }
 
@@ -71,7 +70,6 @@ body {
 .is-cursor-hovered.pcard-open,
 a.is-cursor-hovered,
 button.is-cursor-hovered {
-  border-color: rgba(167, 95, 255, 0.72) !important;
   box-shadow: 0 8px 24px rgba(147, 51, 234, 0.2);
 }
 
@@ -141,6 +139,18 @@ body::after {
   color: var(--text-muted);
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
+}
+
+@media (min-width: 1440px) {
+  .section-tag {
+    font-size: 0.88rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .section-tag {
+    font-size: 0.96rem;
+  }
 }
 
 .glitch {
