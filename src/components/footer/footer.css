@@ -109,12 +109,12 @@
   margin: 0 auto;
   flex-wrap: wrap;
   gap: 8px;
-  & > span:nth-child(1) {
+  /* & > span:nth-child(1) {
     margin-left: 10vw;
   }
   & > span:nth-child(2) {
     margin-right: 10vw;
-  }
+  } */
 }
 .footer-bottom::before {
   content: '';

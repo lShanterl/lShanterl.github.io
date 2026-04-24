@@ -119,6 +119,7 @@
   border-left: 3px solid var(--cyan);
   position: relative;
   width: 30vw;
+  height: fit-content;
 
   @media screen and (max-width: 1024px) {
     width: 100%;

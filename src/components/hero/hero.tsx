@@ -12,7 +12,7 @@ const SCRIPT: TLine[] = [
   { kind: 'cmd', text: 'git push origin main --force' },
   { kind: 'out', text: 'Everything up-to-date (There will be consequences)', },
   { kind: 'cmd', text: 'ls ./hardware' },
-  { kind: 'out', text: 'Raspberry-Pi-Pico/  STM32/  broken_breadboards/' },
+  { kind: 'out', text: 'Raspberry-Pi-Pico/  ESP32/  broken_breadboards/' },
   { kind: 'cmd', text: 'echo $STATUS' },
   { kind: 'out', text: '[✓] Open to new opportunities', success: true },
 ]

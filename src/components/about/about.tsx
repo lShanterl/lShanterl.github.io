@@ -40,7 +40,7 @@ export default function About() {
           <motion.div className="bio-block" {...fadeUp(0.15)}>
             <p className="bio-block-tag">/** intro **/</p>
             <p>
-              I'm <strong>Bartosz Starzyk</strong>, a Software Developer focused on bridging the gap between hardware and high-performance software.
+              I'm a <strong>Software Developer</strong> focused on bridging the gap between hardware and high-performance software.
                I’ve been crafting code since 2020, evolving from simple scripts to production-ready systems for the medical and energy sectors.
             </p>
           </motion.div>

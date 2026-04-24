@@ -11,7 +11,7 @@
   height: var(--nav-height);
   background: rgba(7, 7, 26, 0.85);
   backdrop-filter: blur(20px) saturate(140%);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); 
   font-family: var(--font-mono);
 }
 
@@ -23,8 +23,8 @@
   gap: 8px;
   text-decoration: none;
   color: var(--text);
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: clamp(0.82rem, 1.5vh, 1.2rem); 
+   font-weight: 500;
   white-space: nowrap;
   transition: color 0.2s;
   cursor: none;
@@ -55,7 +55,7 @@
   gap: 7px;
   padding: 0 20px;
   border-right: 1px solid var(--border);
-  font-size: 0.78rem;
+  font-size: clamp(0.78rem, 1.5vh, 1.13rem); 
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s, background 0.2s;
@@ -98,9 +98,9 @@
 }
 .nav-progress-percentage{
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.7rem, 1.5vh, 1.13rem); 
   color: var(--purple-light);
-  padding: 0 16px;
+  padding: 0 2.0vh;
   margin-left: auto;
 }
 .nav-hamburger {
