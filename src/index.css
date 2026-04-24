@@ -25,6 +25,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  @media (min-width: 1440px) {
+    font-size: 19px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 20px;
+  }
+
   @media (max-width: 1024px) {
     font-size: 16px;
   }
@@ -51,8 +59,8 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: min(calc(100% - 2rem), 1680px);
+  max-width: 1680px;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);

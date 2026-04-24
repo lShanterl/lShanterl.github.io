@@ -15,98 +15,211 @@
 }
 
 .skills-title {
-  font-size: clamp(36px, 5.5vw, 80px);
+  font-size: 72px;
   font-weight: 800;
   letter-spacing: -0.025em;
-  margin-bottom: 60px;
+  margin-bottom: clamp(52px, 5vw, 84px);
   color: var(--text);
   line-height: 1.05;
 }
+
 .skills-tag {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
   margin-bottom: 12px;
 }
 
 .skill-category {
-  margin-bottom: 52px;
+  margin-bottom: 24px;
 }
 
 .skill-import {
   font-family: var(--font-mono);
-  font-size: clamp(11px, 1vw, 13px);
+  font-size: 0.74rem;
   line-height: 1.6;
   color: var(--text-muted);
-  margin-bottom: 24px;
-  padding: 14px 18px;
+  margin-bottom: 16px;
+  padding: clamp(14px, 1.6vw, 20px) clamp(18px, 2vw, 26px);
   background: rgba(0, 0, 0, 0.3);
   border-left: 2px solid var(--purple-dim);
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
   overflow-x: auto;
   white-space: nowrap;
+  max-width: 100%;
 }
-.si-kw   { color: #C792EA; }
-.si-brace { color: var(--text-dim); }
-.si-name { color: var(--cyan); }
-.si-path { color: #C3E88D; }
-.si-comment { color: #546E7A; font-style: italic; }
+
+.si-kw {
+  color: #C792EA;
+}
+
+.si-brace {
+  color: var(--text-dim);
+}
+
+.si-name {
+  color: var(--cyan);
+}
+
+.si-path {
+  color: #C3E88D;
+}
+
+.si-comment {
+  color: #546E7A;
+  font-style: italic;
+}
 
 .skill-icons {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: clamp(12px, 1vw, 20px);
 }
 
 .skill-chip {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
+  gap: clamp(10px, 0.8vw, 14px);
+  padding: 10px 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
   transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
 }
+
 .skill-chip:hover {
   border-color: var(--border-active);
   color: var(--text);
   background: var(--bg-card-2);
   transform: translateY(-2px);
 }
+
 .skill-chip img {
-  width: 22px;
-  height: 22px;
+  width: clamp(22px, 1.4vw, 30px);
+  height: clamp(22px, 1.4vw, 30px);
   object-fit: contain;
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
 .skills-desc {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 28px 32px;
-  margin-bottom: 52px;
-  font-size: clamp(14px, 1.3vw, 16px);
+  width: min(100%, 1120px);
+  padding: clamp(28px, 2vw, 42px) clamp(28px, 2.4vw, 48px);
+  margin-right: 5vw;
+  font-size: 0.92rem;
   color: var(--text-dim);
   line-height: 1.75;
   font-family: var(--font-mono);
   border-left: 3px solid var(--cyan);
   position: relative;
+  width: 30vw;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    margin: 0;
+  }
 }
+
 .skills-desc::before {
   content: 'current focus';
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   margin-bottom: 10px;
 }
-.skills-desc strong { color: var(--text); }
+
+.skills-desc strong {
+  color: var(--text);
+}
+
+.skills-flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    gap: 4vh;
+  }
+}
+
+.skills-items {
+  width: 70vw;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .skills-title {
+    font-size: 84px;
+  }
+
+  .skills-tag {
+    font-size: 0.9rem;
+  }
+
+  .skill-import {
+    font-size: 0.8rem;
+  }
+
+  .skill-chip {
+    font-size: 0.92rem;
+  }
+
+  .skills-desc {
+    font-size: 1rem;
+  }
+
+  .skills-desc::before {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .skills-title {
+    font-size: 96px;
+  }
+
+  .skills-tag {
+    font-size: 0.96rem;
+  }
+
+  .skill-import {
+    font-size: 0.86rem;
+  }
+
+  .skill-chip {
+    font-size: 0.98rem;
+  }
+
+  .skills-desc {
+    font-size: 1.08rem;
+  }
+
+  .skills-desc::before {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skills-title {
+    font-size: 56px;
+  }
+}
 
 @media (max-width: 640px) {
-  .skill-import { font-size: 11px; }
+  .skills-title {
+    font-size: 40px;
+  }
+
+  .skill-import {
+    font-size: 11px;
+  }
 }
