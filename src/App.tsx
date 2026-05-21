@@ -12,13 +12,16 @@ import Toast from './components/toast/toast'
 import Bsod from './components/bsod/bsod'
 
 function App() {
-  const { dotRef, ringRef } = useCustomCursor()
+  const { dotRef, ringRef, isEnabled } = useCustomCursor()
   useInkSpot(dotRef, ringRef)
   useEasterEggs()
   return (
     <>
-      <div className="cursor-dot"  ref={dotRef}  />
-      <div className="cursor-ring" ref={ringRef} />
+      <div className={`cursor ${isEnabled ? 'cursor-enabled' : 'cursor-disabled'}`}>
+        <div className="cursor-dot"  ref={dotRef}  />
+        <div className="cursor-ring" ref={ringRef} />
+      </div>
+
 
       <div className="App">
         <Navbar />

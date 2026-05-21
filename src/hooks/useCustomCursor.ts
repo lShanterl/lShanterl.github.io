@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const NORMAL_LERP_FACTOR = 0.5
 const HOVER_LERP_FACTOR = 0.7
@@ -7,8 +7,13 @@ export function useCustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
 
+  const [isEnabled, setIsEnabled] = useState(false)
+
   useEffect(() => {
-    if (!window.matchMedia('(pointer:fine)').matches) return
+    const canUseCursor = window.matchMedia('(pointer:fine)').matches
+    setIsEnabled(canUseCursor)
+
+    if(!canUseCursor) return;
 
     let rafId = 0
     let ringX = 0
@@ -58,5 +63,5 @@ export function useCustomCursor() {
     }
   }, [])
 
-  return { dotRef, ringRef }
+  return { dotRef, ringRef, isEnabled }
 }

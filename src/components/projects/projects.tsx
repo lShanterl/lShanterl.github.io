@@ -61,6 +61,15 @@ const PROJECTS: Project[] = [
     size:        'normal',
   },
   {
+    name:        '2048',
+    filename:    'b2048.cpp',
+    langColor:   '#F18E33',
+    description: 'Classic 2048 game implemented in C++ using OpenGL for graphics, midterm project.',
+    image:       './2048.png',
+    tags:        ['C++', 'OpenGL', 'Classic'],
+    size:        'normal',
+  },
+  {
     name:        'Gravity Assist',
     filename:    'gravity_assist.gd',
     langColor:   '#478CBF',
@@ -71,6 +80,16 @@ const PROJECTS: Project[] = [
     size:        'wide',
   },
     {
+    name:        'Lucario Engine',
+    filename:    'voxel_world.rs',
+    langColor:   '#e07639',
+    description: 'Threaded chunk-loading 3D procedural voxel world generator with biomes and simple physics. Built in Rust with a custom Vulkan renderer.',
+    image:       './lucario_engine.png',
+    tags:        ['Rust', '3D', 'Vulkan'],
+    size:        'featured',
+    link:        'https://github.com/lShanterl/LucarioEngine'
+  },
+  {
     name: "Vinted Scraper",
     filename: "vinted_scraper.py",
     langColor: "#F18E33",
@@ -80,13 +99,23 @@ const PROJECTS: Project[] = [
     size: "normal"
   },
   {
-    name:        'Procedural World',
-    filename:    'worldgen.gd',
-    langColor:   '#478CBF',
-    description: 'Threaded chunk-loading 3D procedural world generator in Godot Engine.',
-    image:       './procedurally-generated-world.png',
-    tags:        ['Godot', '3D', 'Noise'],
+    name:        'Active Self-Balancing Platform',
+    filename:    'platform.ino',
+    langColor:   '#47bf83',
+    description: '',
+    image:       './',
+    tags:        ['Control Theory', 'Embedded', 'Raspberry'],
     size:        'normal',
+  },
+    {
+    name: "Chip-8 Emulator",
+    filename: "chip8_emulator.cpp",
+    langColor: "#2d9951",
+    description: "A simple Chip-8 emulator implemented in C++ with a basic SDL2 frontend.",
+    image: "./chip8.png",
+    tags: ["C++", "Emulator", "SDL2"],
+    size: "normal",
+    link: "https://github.com/lShanterl/chip8_emulator"
   },
 
 ]
@@ -144,6 +173,7 @@ export default function Projects() {
           <span className="marked">shipped</span>
         </h2>
       </motion.div>
+
 
       <div className="bento">
         {PROJECTS.map((p, i) => (

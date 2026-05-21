@@ -4,9 +4,9 @@ import { fadeUp } from '../../utils/animations'
 
 const STATS = [
   { value: '5+',  label: 'years_of_coding' },
-  { value: '19',  label: 'years_old'        },
-  { value: '7+',  label: 'shipped_projects' },
-  { value: '100k+',  label: 'lines_of_code_debugged' },
+  { value: '19',  label: 'years_old // v2.0.07'        },
+  { value: '0',  label: 'undefined_behavior' },
+  { value: '50k+',  label: 'lines_of_code_debugged' },
   { value: '∞',   label: 'curiosity.level'  },
 ]
 
@@ -27,7 +27,9 @@ export default function About() {
       </motion.div>
 
       <div className="about-grid">
+
         <div className="about-stats">
+
           {STATS.map((s, i) => (
             <motion.div className="stat-card" key={s.label} {...fadeUp(0.1 + i * 0.07)}>
               <div className="stat-value">{s.value}</div>
@@ -49,14 +51,14 @@ export default function About() {
             <p className="bio-block-tag">/** what I build **/</p>
             <p>
               My work focuses on <strong>systems programming and embedded engineering</strong>. I specialize in building high-performance applications where memory safety and execution speed are critical, primarily using <strong>C++</strong> and <strong>Rust</strong>.
-              Whether it's bare-metal development on the RP2040, architecting 3D systems with OpenGL, or designing safety-critical logic for the medical and energy industries, I prioritize code that is predictable and efficient. While my core is close to the hardware, I also maintain and architect cross-platform mobile tools in Kotlin and scalable web utilities when the project demands a full-stack approach.
+              Whether it's bare-metal development on the RP2040, architecting 3D systems with OpenGL, or designing reliable logic for the medical and industrial applications, I prioritize code that is predictable and efficient. While my core is close to the hardware, I also build cross-platform mobile tools in Kotlin and scalable web utilities when the project demands a full-stack approach.
             </p>
           </motion.div>
 
           <motion.div className="bio-block" {...fadeUp(0.29)}>
             <p className="bio-block-tag">/** industrial experience **/</p>
             <p><strong>Software & QA Intern @ Digital Technology Poland</strong> <br />
-            Worked on Digital Twin solutions for the energy sector. I was responsible for automating E2E testing pipelines using <strong>Playwright</strong> and integrating E-CAD/CAD data flows. This role sharpened my focus on Industry 4.0 standards, regression testing, and high-reliability software architectures because in the energy sector, "undefined behavior" isn't just a bug; it's a crisis.
+            Worked on Digital Twin solutions for the energy sector. I was responsible for automating E2E testing pipelines with <strong>Playwright</strong> and integrating E-CAD/CAD data flows. This role sharpened my focus on Industry 4.0 standards, regression testing, and high-reliability architectures because in the energy sector, "undefined behavior" isn't just a bug; it's a crisis.
           </p>
           </motion.div>
             

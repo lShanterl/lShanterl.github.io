@@ -320,6 +320,7 @@ body.rust-mode .terminal-path::after {
   .hero-text { gap: 14px; }
   .hero-subtitle { max-width: 100%; }
   .hero-terminal { display: none; }
+  .hero-scroll { display:none; }
 }
 @media (max-width: 640px) {
   .hero { padding: 0 20px; padding-top: 40px; }

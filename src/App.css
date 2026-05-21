@@ -18,7 +18,6 @@ body {
   cursor: none;
   -webkit-font-smoothing: antialiased;
 }
-
 .cursor-dot {
   position: fixed;
   width: 8px;
@@ -35,6 +34,12 @@ body {
 .cursor-dot.is-hidden {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.25);
+}
+.cursor_enabled {
+  display: block;
+}
+.cursor-disabled {
+  display: none;
 }
 .cursor-ring {
   --ring-scale: 1;

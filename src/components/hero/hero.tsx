@@ -109,8 +109,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.35 }}
           >
             <strong>Systems & Embedded Developer</strong> from Poland. 
-            I architect high-performance solutions in C++ and Rust, focusing on the volatile space where hardware meets software. 
-            From OpenGL renderers to medical-grade deployments I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters.
+            I build high-performance solutions in C++ and Rust, focusing on the intersection where hardware meets software. 
+            From OpenGL renderers to to production systems in healthcare and energy, I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters.
           </motion.p>
 
           <motion.div

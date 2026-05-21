@@ -6,15 +6,16 @@ type Skill = { name: string; img: string }
 const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
   {
     title: 'Languages',
-    importStr: 'import { cpp, rust, typescript, kotlin, csharp, python } from \'@shanter/languages\'',
+    importStr: 'import { cpp, rust, typescript, kotlin, csharp, python, golang } from \'@shanter/languages\'',
     skills: [
       { name: 'C++',        img: './cpp.svg'        },
       { name: 'Rust',       img: './rust.svg'       },
       { name: 'TypeScript', img: './typescript.svg' },
-      { name: 'C#',         img: './csharp.svg'     },
       { name: 'Kotlin',     img: './kotlin.svg'     },
-      { name: 'JavaScript', img: './javascript.svg' },
+      { name: 'C#',         img: './csharp.svg'     },
+      //{ name: 'JavaScript', img: './javascript.svg' },
       { name: 'Python',     img: './python.svg'     },
+      { name: 'Go',         img: './golang.svg'     },
     ],
   },
   {
@@ -30,12 +31,13 @@ const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
   },
   {
     title: 'Tools & Frameworks',
-    importStr: 'import { react, git, figma, photoshop } from \'@shanter/tools\'',
+    importStr: 'import { react, git, figma, photoshop, fusion360 } from \'@shanter/tools\'',
     skills: [
       { name: 'React',      img: './react.svg'      },
       { name: 'Git',        img: './git.svg'        },
       { name: 'Figma',      img: './figma.svg'      },
       { name: 'Photoshop',  img: './photoshop.svg'  },
+      { name: 'Fusion 360',  img: './fusion360.svg'  },
     ],
   },
 ]
@@ -84,11 +86,10 @@ export default function Skills() {
       <motion.div className='skills-flex'>
         
       <motion.div className="skills-desc" {...fadeUp(0.1)}>
-        I specialize in Memory-Safe Systems <strong>Rust</strong> and High-Performance <strong>C++</strong>. 
-        From understanding of the graphics pipeline to architecting game logic in Godot and Unreal Engine. 
-        My experience in <strong>Industry 4.0 Digital Twins and Healthcare IT</strong> has taught me to write code where <strong>"it works on my machine"</strong> isn't an acceptable answer.
+        I specialize in <strong>Rust</strong> for memory-safe systems and <strong>C++</strong> for high-performance applications. 
+        My work spans embedded systems, 3D graphics with OpenGL, game development in Godot and Unreal Engine, and production systems for energy and healthcare.
+        Experience with <strong>Industry 4.0 Digital Twins</strong> and reliability-critical applications has taught me that <strong>"it works on my machine"</strong> isn't an acceptable answer.
       </motion.div>
-
       <motion.div className="skills-items" {...fadeUp(0.2)}>
       {CATEGORIES.map((cat, ci) => (
         <motion.div className="skill-category" key={cat.title} {...fadeUp(0.1 + ci * 0.1)}>
