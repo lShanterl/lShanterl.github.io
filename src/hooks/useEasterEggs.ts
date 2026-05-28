@@ -12,8 +12,6 @@ const TRIGGER_RESPONSES: Record<string, string> = {
   'sudo':        '> nice try. permission denied.',
   'hack':        '> accessing mainframe...\n> just kidding.',
   'vim':         '> good luck getting out of here.',
-  'git blame':   '> it was definitely not me.',
-  'npm install': '> node_modules will take a moment.\n> or a lifetime.',
 }
 
 function useRageClick() {

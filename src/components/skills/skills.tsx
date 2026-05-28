@@ -31,7 +31,7 @@ const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
   },
   {
     title: 'Embedded & Infrastructure',
-    importStr: "import { linux, embedded, git, docker, playwright } from '@shanter/tools'",
+    importStr: "import { photoshop, fusion360, blender, git, docker, playwright, bare_metal } from '@shanter/tools'",
     skills: [
       { name: 'Photoshop',    img: './photoshop.svg' },
       { name: 'Fusion 360',    img: './fusion360.svg' },

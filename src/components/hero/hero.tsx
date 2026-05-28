@@ -79,15 +79,30 @@ export default function Hero() {
   const [terminalInput, setTerminalInput] = useState('')
   const [customOutputs, setCustomOutputs] = useState<string[]>([])
 
+  const terminalBodyRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTo({
+        top: terminalBodyRef.current.scrollHeight,
+        behavior: 'smooth'
+      })
+    }
+  }, [lines, customOutputs])
+
   const handleTerminalSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const cmd = terminalInput.trim().toLowerCase()
     if (!cmd) return
 
+    //TODO: move easter eggs hook to the console instead of toast??
     let out = `command not found: ${cmd}. Try 'help' or 'clear'.`
-    if (cmd === 'help') out = 'Available commands: help, cat resume, clear, matrix'
+    if (cmd === 'help') out = 'Available commands: help, cat resume, clear, matrix, npm install, sudo, git blame'
     if (cmd === 'cat resume') out = 'Opening resume asset link context...'
     if (cmd === 'matrix') out = 'Wake up, Neo... Select alternative files above.'
+    if (cmd === 'npm install') out = 'node modules will take a moment ... or a lifetime.'
+    if (cmd === 'sudo') out = 'nice try. permission denied.'
+    if (cmd === 'git blame') out = 'it was definitely not me.'
     
     if (cmd === 'cat resume') {
       window.open('/resume.pdf', '_blank')
@@ -176,7 +191,7 @@ export default function Hero() {
             <span className="terminal-path">~/portfolio/shanter - zsh</span>
           </div>
 
-          <div className="terminal-body">
+          <div className="terminal-body" ref={terminalBodyRef}>
             {lines.map((line, i) => (
               <div className="t-line" key={i}>
                 {line.kind === 'cmd' ? (
@@ -196,7 +211,16 @@ export default function Hero() {
 
             {customOutputs.map((out, i) => (
               <div key={i} className="t-line custom-out">
-                <span className="t-out">{out}</span>
+                {i % 2 === 0 ? (
+                  <>
+                  <span className="t-prompt">
+                    <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
+                  </span>
+                  <span className="t-cmd">{out.replace(/^shanter@dev ~ \$ /, '')}</span>
+                  </>
+                ) : (
+                  <span className="t-out">{out}</span>
+                )}
               </div>
             ))}
 
@@ -214,6 +238,7 @@ export default function Hero() {
                   autoComplete="off"
                   autoCorrect="off"
                   autoCapitalize="off"
+                  autoFocus
                   spellCheck="false"
                 />
               </form>
