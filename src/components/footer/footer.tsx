@@ -19,7 +19,7 @@ export default function Footer() {
         </span>
 
         <nav className="footer-nav" aria-label="Footer navigation">
-          {NAV.map(({ label, href }, i) => (
+          {NAV.map(({ label, href }, _) => (
             <a key={label} className="footer-nav-link" href={href}>
               {label}
             </a>

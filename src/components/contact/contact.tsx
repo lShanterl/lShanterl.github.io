@@ -298,7 +298,7 @@ export default function Contact() {
           <div className="cip-block">
             <span className="cip-comment">/** open_to **/</span>
             <div className="cip-pill-row">
-              {['Embedded roles', 'Systems dev', 'Game engine work', 'Remote / hybrid'].map(tag => (
+              {['Embedded roles', 'Interesting opportunities', 'Systems dev', 'Game engine work', 'Remote / hybrid'].map(tag => (
                 <span className="cip-pill" key={tag}>{tag}</span>
               ))}
             </div>

@@ -7,12 +7,12 @@ type TLine =
   | { kind: 'out';  text: string; success?: boolean }
 
 const SCRIPT: TLine[] = [
-  { kind: 'cmd', text: 'whoami' },
-  { kind: 'out', text: 'Bartosz Starzyk - systems & embedded dev, PL' },
-  { kind: 'cmd', text: 'git push origin main --force' },
-  { kind: 'out', text: 'Everything up-to-date (There will be consequences)' },
-  { kind: 'cmd', text: 'ls ./hardware' },
-  { kind: 'out', text: 'Raspberry-Pi-Pico/  ESP32/  broken_breadboards/' },
+  { kind: 'cmd', text: 'perf stat renderer' },
+  { kind: 'out', text: 'Frame time reduced from 18.4ms → 5.2ms' },
+  { kind: 'cmd', text: 'cargo build --release' },
+  { kind: 'out', text: 'Binary size: 412KB' },
+  { kind: 'cmd', text: 'system status' },
+  { kind: 'out', text: 'ESP32 telemetry pipeline active' },
   { kind: 'cmd', text: 'echo $STATUS' },
   { kind: 'out', text: '[✓] Open to new opportunities', success: true },
 ]
@@ -133,8 +133,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.35 }}
           >
             <strong>Systems & Embedded Developer</strong> from Poland.
-            I build high-performance software in C++ and Rust, thriving <em>below</em> the abstraction layer, 
-            where the bugs are weirder and the performance actually matters.
+            Specializing in embedded systems, graphics programming, and performance-critical software using C++ and Rust.
           </motion.p>
 
           <motion.div

@@ -45,7 +45,7 @@ export default function About() {
 
       <div className="about-layout-container">
         <div className="about-stats-row">
-          {STATS.map((stat, i) => {
+          {STATS.map((stat, _) => {
             const count = useCountUp(stat.num, isInView)
             return (
               <div className="stat-node" key={stat.label}>

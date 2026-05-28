@@ -172,7 +172,7 @@
   .nav-mobile-menu a { font-size: 1.02rem; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 750px) {
   .nav-tabs { display: none; }
   .nav-hamburger { display: flex; margin-left: auto; }
 }

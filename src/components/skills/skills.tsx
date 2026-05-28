@@ -31,13 +31,15 @@ const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
   },
   {
     title: 'Embedded & Infrastructure',
-    importStr: "import { linux, embedded, git, docker, playwright } from '@shanter/infra'",
+    importStr: "import { linux, embedded, git, docker, playwright } from '@shanter/tools'",
     skills: [
-      { name: 'Linux / Bash',  img: './linux.svg'      },
-      { name: 'Bare Metal',    img: './microchip.svg'  },
+      { name: 'Photoshop',    img: './photoshop.svg' },
+      { name: 'Fusion 360',    img: './fusion360.svg' },
+      { name: 'Blender',    img: './blender.svg' },
       { name: 'Git',           img: './git.svg'        },
       { name: 'Docker',        img: './docker.svg'     },
       { name: 'Playwright',    img: './playwright.svg' },
+      { name: 'Bare Metal',    img: './microchip.svg'  },
     ],
   },
 ]

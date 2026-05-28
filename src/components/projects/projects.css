@@ -247,6 +247,30 @@
   font-size: 0.95rem;
   margin-bottom: 4px;
 }
+.pcard.featured {
+  border-color: rgba(147, 51, 234, 0.4); 
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.05);
+}
+
+.pcard.featured .pcard-name {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+}
+.pcard.featured .pcard-filename{
+  /*color: var(--purple-light);*/
+}
+
+
+.pcard.featured .pcard-tab::after {
+  content: '★ FEATURED_MODULE';
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--purple-light);
+  background: rgba(147, 51, 234, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
 
 @media (max-width: 1024px) {
   .bento-grid {
