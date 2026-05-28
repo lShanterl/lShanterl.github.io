@@ -91,6 +91,7 @@
   height: 2px;
   background: linear-gradient(90deg, var(--purple), var(--cyan));
   transition: linear;
+  
 }
 .nav-progress{
   display: flex;

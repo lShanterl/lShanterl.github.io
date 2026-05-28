@@ -10,7 +10,7 @@ const SCRIPT: TLine[] = [
   { kind: 'cmd', text: 'whoami' },
   { kind: 'out', text: 'Bartosz Starzyk - systems & embedded dev, PL' },
   { kind: 'cmd', text: 'git push origin main --force' },
-  { kind: 'out', text: 'Everything up-to-date (There will be consequences)', },
+  { kind: 'out', text: 'Everything up-to-date (There will be consequences)' },
   { kind: 'cmd', text: 'ls ./hardware' },
   { kind: 'out', text: 'Raspberry-Pi-Pico/  ESP32/  broken_breadboards/' },
   { kind: 'cmd', text: 'echo $STATUS' },
@@ -43,18 +43,18 @@ function useTerminal() {
         })
 
         if (char.current < current.text.length) {
-          t = setTimeout(tick, 20 + Math.random() * 100)
+          t = setTimeout(tick, 15 + Math.random() * 50)
         } else {
-            setLines(prev => {
-              const last = prev[prev.length - 1];
-              if (last?.kind === 'cmd') {
-                return [...prev.slice(0, -1), { ...last, text: current.text, done: true }];
-              }
-              return prev;
-            });
+          setLines(prev => {
+            const last = prev[prev.length - 1];
+            if (last?.kind === 'cmd') {
+              return [...prev.slice(0, -1), { ...last, text: current.text, done: true }];
+            }
+            return prev;
+          });
           char.current = 0
           idx.current++
-          t = setTimeout(tick, 220)
+          t = setTimeout(tick, 150)
         }
       } else {
         setLines(prev => [
@@ -63,11 +63,11 @@ function useTerminal() {
         ])
         char.current = 0
         idx.current++
-        t = setTimeout(tick, 650)
+        t = setTimeout(tick, 400)
       }
     }
 
-    t = setTimeout(tick, 800)
+    t = setTimeout(tick, 500)
     return () => clearTimeout(t)
   }, [])
 
@@ -75,7 +75,31 @@ function useTerminal() {
 }
 
 export default function Hero() {
-  const { lines } = useTerminal()
+  const { lines, busy } = useTerminal()
+  const [terminalInput, setTerminalInput] = useState('')
+  const [customOutputs, setCustomOutputs] = useState<string[]>([])
+
+  const handleTerminalSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const cmd = terminalInput.trim().toLowerCase()
+    if (!cmd) return
+
+    let out = `command not found: ${cmd}. Try 'help' or 'clear'.`
+    if (cmd === 'help') out = 'Available commands: help, cat resume, clear, matrix'
+    if (cmd === 'cat resume') out = 'Opening resume asset link context...'
+    if (cmd === 'matrix') out = 'Wake up, Neo... Select alternative files above.'
+    
+    if (cmd === 'cat resume') {
+      window.open('/resume.pdf', '_blank')
+    }
+
+    if (cmd === 'clear') {
+      setCustomOutputs([])
+    } else {
+      setCustomOutputs(prev => [...prev, `shanter@dev ~ $ ${terminalInput}`, out])
+    }
+    setTerminalInput('')
+  }
 
   return (
     <section className="hero" id="hero">
@@ -99,7 +123,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Shanter<span className="marked">.</span>
+            Bartosz Starzyk<span className="marked">.</span>
           </motion.h1>
 
           <motion.p
@@ -108,9 +132,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
           >
-            <strong>Systems & Embedded Developer</strong> from Poland. 
-            I build high-performance solutions in C++ and Rust, focusing on the intersection where hardware meets software. 
-            From OpenGL renderers to to production systems in healthcare and energy, I thrive <em>below </em> the abstraction layer, where the bugs are weirder and the performance actually matters.
+            <strong>Systems & Embedded Developer</strong> from Poland.
+            I build high-performance software in C++ and Rust, thriving <em>below</em> the abstraction layer, 
+            where the bugs are weirder and the performance actually matters.
           </motion.p>
 
           <motion.div
@@ -119,7 +143,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.45 }}
           >
-            {['C++', 'Rust', 'Embedded', 'Game Dev'].map(tag => (
+            {['C++', 'Rust', 'Embedded', 'Graphics', 'Game Dev'].map(tag => (
               <span className="hero-pill" key={tag}>{tag}</span>
             ))}
           </motion.div>
@@ -131,8 +155,10 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.55 }}
           >
             <a className="btn-primary" href="#projects">./view-projects</a>
-            <a className="btn-ghost"   href="#contact">get_in_touch()</a>
-            {/* <span className="cta-note">// No garbage collector was used here</span> */}
+            <a className="btn-secondary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span className="resume-icon">↓</span> download_resume()
+            </a>
+            <a className="btn-ghost" href="#contact">get_in_touch()</a>
           </motion.div>
         </div>
 
@@ -143,9 +169,11 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           <div className="terminal-bar">
-            <span className="terminal-dot red"    />
-            <span className="terminal-dot yellow" />
-            <span className="terminal-dot green"  />
+            <div className="terminal-dots">
+              <span className="terminal-dot red"    />
+              <span className="terminal-dot yellow" />
+              <span className="terminal-dot green"  />
+            </div>
             <span className="terminal-path">~/portfolio/shanter - zsh</span>
           </div>
 
@@ -167,8 +195,31 @@ export default function Hero() {
               </div>
             ))}
 
-          </div>
+            {customOutputs.map((out, i) => (
+              <div key={i} className="t-line custom-out">
+                <span className="t-out">{out}</span>
+              </div>
+            ))}
 
+            {!busy && (
+              <form onSubmit={handleTerminalSubmit} className="t-form-line">
+                <span className="t-prompt">
+                  <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
+                </span>
+                <input
+                  type="text"
+                  className="t-input"
+                  value={terminalInput}
+                  onChange={(e) => setTerminalInput(e.target.value)}
+                  placeholder="type 'help'..."
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                />
+              </form>
+            )}
+          </div>
         </motion.div>
       </div>
 

@@ -10,6 +10,7 @@ import Footer   from './components/footer/footer'
 import { useEasterEggs } from './hooks/useEasterEggs'
 import Toast from './components/toast/toast'
 import Bsod from './components/bsod/bsod'
+import Contact from './components/contact/contact'
 
 function App() {
   const { dotRef, ringRef, isEnabled } = useCustomCursor()
@@ -29,6 +30,7 @@ function App() {
         <About />
         <Skills />
         <Projects />
+        <Contact />
         <Footer />
         <Toast />
         <Bsod />

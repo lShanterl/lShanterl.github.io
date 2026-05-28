@@ -5,178 +5,57 @@
   z-index: 2;
   border-top: 1px solid var(--border);
   background: var(--bg-deep);
-  padding: clamp(40px, 6vh, 80px) clamp(24px, 6vw, 100px);
+  padding: 28px clamp(24px, 6vw, 100px);
 }
 
 .footer-inner {
+  max-width: 1500px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1500px;
-  margin: 0 auto;
-  padding-bottom: 24px;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 16px;
 }
 
-.footer-sig {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.footer-sig-name {
-  font-size: clamp(22px, 3vw, 36px);
+.footer-name {
+  font-size: 1rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  letter-spacing: -0.02em;
 }
-.footer-sig-sub {
+
+.footer-nav {
+  display: flex;
+  gap: 24px;
+}
+.footer-nav-link {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
-}
-.footer-sig-sub span { color: var(--green); }
-
-.footer-sig-time {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-.footer-link-row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.footer-link-row a {
-  color: var(--text-dim);
   text-decoration: none;
   transition: color 0.2s;
   cursor: none;
 }
-.footer-link-row a:hover { color: var(--purple-light); }
-.footer-link-separator { opacity: 0.3; }
-
-.footer-socials {
-  display: flex;
-  gap: 12px;
-}
-.social-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  background: var(--bg-card);
-  color: var(--text-dim);
-  text-decoration: none;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
-  cursor: none;
-}
-.social-btn:hover {
-  border-color: var(--border-active);
-  color: var(--text);
-  background: var(--bg-card-2);
-}
-.social-btn svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+.footer-nav-link:hover {
+  color: var(--purple-light);
 }
 
-.footer-bottom {
-  margin-top: 40px;
-  padding-top: 24px;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.footer-copy {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
-  max-width: 1500px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 8px;
-  /* & > span:nth-child(1) {
-    margin-left: 10vw;
-  }
-  & > span:nth-child(2) {
-    margin-right: 10vw;
-  } */
 }
-.footer-bottom::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-.vertical{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.footer-bottom .kw      { color: #C792EA; }
-.footer-bottom .str     { color: #C3E88D; }
+.footer-copy .kw  { color: #C792EA; }
+.footer-copy .str { color: #C3E88D; }
 
-@media (min-width: 1440px) {
-  .footer-sig-sub,
-  .footer-sig-time { font-size: 0.84rem; }
-  .footer-links { font-size: 0.86rem; }
-  .social-btn { font-size: 0.84rem; }
-  .footer-bottom { font-size: 0.8rem; }
-}
-
-@media (min-width: 1920px) {
-  .footer-sig-sub,
-  .footer-sig-time { font-size: 0.9rem; }
-  .footer-links { font-size: 0.92rem; }
-  .social-btn { font-size: 0.9rem; }
-  .footer-bottom { font-size: 0.86rem; }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 14px;
   }
-
-  .footer-socials {
+  .footer-nav {
+    gap: 16px;
     flex-wrap: wrap;
   }
 }
-
-@media (max-width: 640px) {
-  .footer {
-    padding: 38px 20px;
-  }
-
-  .footer-bottom {
-    width: 100%;
-    min-width: 0;
-    margin-right: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .footer-link-row {
-    flex-wrap: wrap;
-  }
-}
-

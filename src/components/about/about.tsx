@@ -1,78 +1,94 @@
 import './about.css'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
 import { fadeUp } from '../../utils/animations'
 
 const STATS = [
-  { value: '5+',  label: 'years_of_coding' },
-  { value: '19',  label: 'years_old // v2.0.07'        },
-  { value: '0',  label: 'undefined_behavior' },
-  { value: '50k+',  label: 'lines_of_code_debugged' },
-  { value: '∞',   label: 'curiosity.level'  },
+  { value: '5+',   label: 'years_of_coding',          suffix: '+', num: 5   },
+  //{ value: '19',   label: 'years_old // v2.0.07',     suffix: '',  num: 19  },
+  { value: '0',    label: 'undefined_behavior',       suffix: '',  num: 0   },
+  { value: '50k+', label: 'lines_of_code_debugged',   suffix: 'k+',num: 50  },
+  { value: '10+', label: 'personal_projects', suffix: '+', num: 10 },
+  { value: '∞',    label: 'curiosity.level',          suffix: '∞', num: -1  },
 ]
 
 const INTERESTS = [
-  'C++', 'Game Dev', 'Rust', 'OpenGL', 'Godot', "Embedded Systems",
-  'Unreal Engine', 'Blender', 'Volleyball', 'Science', "Seg-faults",
+  'Embedded Systems', 'Game Dev', "3D Graphics",
+  'Volleyball', 'Science', "Debugging Complexity"
 ]
 
+function useCountUp(num: number, active: boolean, duration = 1300) {
+  const [display, setDisplay] = useState(0)
+  useEffect(() => {
+    if (!active || num <= 0) return
+    const startTime = performance.now()
+    const tick = (now: number) => {
+      const t = Math.min((now - startTime) / duration, 1)
+      setDisplay(Math.floor(t * num))
+      if (t < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [num, active, duration])
+  return display
+}
+
 export default function About() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   return (
-    <section className="about section-wrapper" id="about">
-      <motion.div className="about-header" {...fadeUp(0)}>
-        <p className="about-tag">about.tsx - export default About</p>
-        <h2 className="about-title">
-          A bit about<br />
-          <span className="marked">me</span>
-        </h2>
-      </motion.div>
+    <section className="about section-wrapper" id="about" ref={ref}>
+      <div className="section-centered-header">
+        <p className="section-tag">about.tsx - export default About</p>
+        <h2 className="section-display-title">About <span className="marked">Me</span></h2>
+      </div>
 
-      <div className="about-grid">
-
-        <div className="about-stats">
-
-          {STATS.map((s, i) => (
-            <motion.div className="stat-card" key={s.label} {...fadeUp(0.1 + i * 0.07)}>
-              <div className="stat-value">{s.value}</div>
-              <div className="stat-label">{s.label}</div>
-            </motion.div>
-          ))}
+      <div className="about-layout-container">
+        <div className="about-stats-row">
+          {STATS.map((stat, i) => {
+            const count = useCountUp(stat.num, isInView)
+            return (
+              <div className="stat-node" key={stat.label}>
+                <span className="stat-node-val">
+                  {stat.num === -1 ? stat.value : `${count}${stat.suffix}`}
+                </span>
+                <span className="stat-node-lbl">{stat.label}</span>
+              </div>
+            )
+          })}
         </div>
 
-        <div className="about-bio">
-          <motion.div className="bio-block" {...fadeUp(0.15)}>
-            <p className="bio-block-tag">/** intro **/</p>
-            <p>
-              I'm a <strong>Software Developer</strong> focused on bridging the gap between hardware and high-performance software.
-               I’ve been crafting code since 2020, evolving from simple scripts to production-ready systems for the medical and energy sectors.
+        <div className="about-text-grid">
+          <motion.div className="about-card" {...fadeUp(0.1)}>
+            <p className="card-comment-tag">/** background **/</p>
+            <p className="card-body-text">
+              I specialize in writing close-to-the-metal software where memory safety and execution speed 
+              are non-negotiable—primarily in <strong>C++</strong> and <strong>Rust</strong>.
+              My work centers on bare-metal development for microcontrollers, custom 3D graphics engines,
+              and optimizing system components beneath traditional abstraction layers.
             </p>
           </motion.div>
 
-          <motion.div className="bio-block" {...fadeUp(0.22)}>
-            <p className="bio-block-tag">/** what I build **/</p>
-            <p>
-              My work focuses on <strong>systems programming and embedded engineering</strong>. I specialize in building high-performance applications where memory safety and execution speed are critical, primarily using <strong>C++</strong> and <strong>Rust</strong>.
-              Whether it's bare-metal development on the RP2040, architecting 3D systems with OpenGL, or designing reliable logic for the medical and industrial applications, I prioritize code that is predictable and efficient. While my core is close to the hardware, I also build cross-platform mobile tools in Kotlin and scalable web utilities when the project demands a full-stack approach.
+          <motion.div className="about-card" {...fadeUp(0.2)}>
+            <p className="card-comment-tag">/** commercial experience **/</p>
+            <div className="experience-header">
+              <span className="exp-role">Software & QA Intern</span>
+              <span className="exp-firm">@ Digital Technology Poland</span>
+            </div>
+            <p className="card-body-text">
+              Engineered Digital Twin solutions for the industrial energy sector. Automated end-to-end testing pipelines using <strong>Playwright </strong>
+              and architected robust hardware data flows, focusing heavily on system regression metrics and fault-tolerant architectures.
             </p>
           </motion.div>
 
-          <motion.div className="bio-block" {...fadeUp(0.29)}>
-            <p className="bio-block-tag">/** industrial experience **/</p>
-            <p><strong>Software & QA Intern @ Digital Technology Poland</strong> <br />
-            Worked on Digital Twin solutions for the energy sector. I was responsible for automating E2E testing pipelines with <strong>Playwright</strong> and integrating E-CAD/CAD data flows. This role sharpened my focus on Industry 4.0 standards, regression testing, and high-reliability architectures because in the energy sector, "undefined behavior" isn't just a bug; it's a crisis.
-          </p>
-          </motion.div>
-            
-
-          <motion.div className="bio-block" {...fadeUp(0.36)}>
-            <p className="bio-block-tag">/** interests **/</p>
-            <div className="about-tags">
+          <motion.div className="about-card span-full" {...fadeUp(0.3)}>
+            <p className="card-comment-tag">/** core interests **/</p>
+            <div className="interests-pill-box">
               {INTERESTS.map(tag => (
-                <span className="about-tag-pill" key={tag}>{tag}</span>
+                <span className="interest-pill" key={tag}>{tag}</span>
               ))}
             </div>
           </motion.div>
-
-
         </div>
       </div>
     </section>

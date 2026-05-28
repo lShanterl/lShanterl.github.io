@@ -1,26 +1,26 @@
 import './skills.css'
 import { motion } from 'framer-motion'
+import { fadeUp } from '../../utils/animations'
 
 type Skill = { name: string; img: string }
 
 const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
   {
     title: 'Languages',
-    importStr: 'import { cpp, rust, typescript, kotlin, csharp, python, golang } from \'@shanter/languages\'',
+    importStr: "import { cpp, rust, typescript, kotlin, csharp, python, golang } from '@shanter/languages'",
     skills: [
       { name: 'C++',        img: './cpp.svg'        },
       { name: 'Rust',       img: './rust.svg'       },
       { name: 'TypeScript', img: './typescript.svg' },
       { name: 'Kotlin',     img: './kotlin.svg'     },
       { name: 'C#',         img: './csharp.svg'     },
-      //{ name: 'JavaScript', img: './javascript.svg' },
       { name: 'Python',     img: './python.svg'     },
       { name: 'Go',         img: './golang.svg'     },
     ],
   },
   {
     title: 'Graphics & Game Dev',
-    importStr: 'import { opengl, unity, godot, unreal, blender } from \'@shanter/gamedev\'',
+    importStr: "import { opengl, unity, godot, unreal, blender } from '@shanter/gamedev'",
     skills: [
       { name: 'OpenGL',        img: './opengl.svg'  },
       { name: 'Unity',         img: './unity.svg'   },
@@ -30,89 +30,86 @@ const CATEGORIES: { title: string; importStr: string; skills: Skill[] }[] = [
     ],
   },
   {
-    title: 'Tools & Frameworks',
-    importStr: 'import { react, git, figma, photoshop, fusion360 } from \'@shanter/tools\'',
+    title: 'Embedded & Infrastructure',
+    importStr: "import { linux, embedded, git, docker, playwright } from '@shanter/infra'",
     skills: [
-      { name: 'React',      img: './react.svg'      },
-      { name: 'Git',        img: './git.svg'        },
-      { name: 'Figma',      img: './figma.svg'      },
-      { name: 'Photoshop',  img: './photoshop.svg'  },
-      { name: 'Fusion 360',  img: './fusion360.svg'  },
+      { name: 'Linux / Bash',  img: './linux.svg'      },
+      { name: 'Bare Metal',    img: './microchip.svg'  },
+      { name: 'Git',           img: './git.svg'        },
+      { name: 'Docker',        img: './docker.svg'     },
+      { name: 'Playwright',    img: './playwright.svg' },
     ],
   },
 ]
 
-const fadeUp = (delay = 0) => ({
-  initial:    { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport:   { once: true },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
-})
-
 function ImportLine({ raw }: { raw: string }) {
-  const match = raw.match(/^import \{ (.+) \} from ('.*')$/)
+  const match = raw.match(/^(import\s+.*?from\s+)(['"].*?['"])$/)
   if (!match) return <span className="skill-import">{raw}</span>
-
-  const names = match[1].split(', ')
-  const path  = match[2]
-
   return (
-    <div className="skill-import">
-      <span className="si-kw">import</span>
-      <span className="si-brace"> {'{ '}</span>
-      {names.map((n, i) => (
-        <span key={n}>
-          <span className="si-name">{n}</span>
-          {i < names.length - 1 && <span className="si-brace">, </span>}
-        </span>
-      ))}
-      <span className="si-brace">{' }'}</span>
-      <span className="si-kw"> from </span>
-      <span className="si-path">{path}</span>
-    </div>
+    <span className="skill-import">
+      <span className="keyword">import</span>&nbsp;
+      <span className="braces">{"{"}</span>&nbsp;
+      <span className="variables">{raw.substring(8, raw.indexOf('}'))}</span>
+      <span className="braces">{"}"}</span>&nbsp;
+      <span className="keyword">from</span>&nbsp;
+      <span className="string">{match[2]}</span>
+    </span>
   )
 }
 
 export default function Skills() {
   return (
     <section className="skills section-wrapper" id="skills">
-      <motion.div {...fadeUp(0)}>
-        <p className="skills-tag">skills.cpp - tech_stack::config</p>
-        <h2 className="skills-title">
-          What I work<br />
-          <span className="marked">with</span>
-        </h2>
-      </motion.div>
-      <motion.div className='skills-flex'>
-        
-      <motion.div className="skills-desc" {...fadeUp(0.1)}>
-        I specialize in <strong>Rust</strong> for memory-safe systems and <strong>C++</strong> for high-performance applications. 
-        My work spans embedded systems, 3D graphics with OpenGL, game development in Godot and Unreal Engine, and production systems for energy and healthcare.
-        Experience with <strong>Industry 4.0 Digital Twins</strong> and reliability-critical applications has taught me that <strong>"it works on my machine"</strong> isn't an acceptable answer.
-      </motion.div>
-      <motion.div className="skills-items" {...fadeUp(0.2)}>
-      {CATEGORIES.map((cat, ci) => (
-        <motion.div className="skill-category" key={cat.title} {...fadeUp(0.1 + ci * 0.1)}>
-          <ImportLine raw={cat.importStr} />
-          <div className="skill-icons">
-            {cat.skills.map((sk, si) => (
-              <motion.div
-              className="skill-chip"
-              key={sk.name}
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.05 + si * 0.05 }}
-              >
-                <img src={sk.img} alt={sk.name} />
-                {sk.name}
-              </motion.div>
-            ))}
-          </div>
+      <div className="section-centered-header">
+        <p className="section-tag">skills.cpp - tech_stack::config</p>
+        <h2 className="section-display-title">Technical <span className="marked">Stack</span></h2>
+      </div>
+
+      <div className="skills-layout-container">
+        <motion.div className="skills-focus-banner" {...fadeUp(0.1)}>
+          <span className="banner-eyebrow">Core Competence Focus</span>
+          <p className="banner-text">
+          I bridge the gap between strict hardware constraints and software execution. 
+          Instead of relying on heavy runtime environments, my focus is on writing deterministic,
+          low-overhead code, minimizing cache misses via data-oriented design, and implementing models   
+          that keep performance-critical systems running without failure.
+          </p>
         </motion.div>
-      ))}
-      </motion.div>
-      </motion.div>
+
+        <div className="skills-modules-list">
+          {CATEGORIES.map((cat, ci) => (
+            <motion.div 
+              className="skill-ide-card" 
+              key={cat.title} 
+              {...fadeUp(0.15 + ci * 0.08)}
+            >
+              <div className="ide-card-header">
+                <div className="ide-dots">
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                </div>
+                <div className="ide-tab-title"><ImportLine raw={cat.importStr} /></div>
+              </div>
+              <div className="ide-card-body">
+                {cat.skills.map((sk, si) => (
+                  <motion.div
+                    className="skill-item-badge"
+                    key={sk.name}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.2, delay: si * 0.03 }}
+                  >
+                    <img src={sk.img} alt={sk.name} className="badge-icon" />
+                    <span className="badge-name">{sk.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

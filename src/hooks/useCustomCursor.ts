@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
-const NORMAL_LERP_FACTOR = 0.5
-const HOVER_LERP_FACTOR = 0.7
+const NORMAL_LERP_FACTOR = 0.9
+const HOVER_LERP_FACTOR = 0.85
 
 export function useCustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
@@ -62,6 +62,5 @@ export function useCustomCursor() {
       cancelAnimationFrame(rafId)
     }
   }, [])
-
   return { dotRef, ringRef, isEnabled }
 }
