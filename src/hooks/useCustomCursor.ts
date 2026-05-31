@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const NORMAL_LERP_FACTOR = 0.9
-const HOVER_LERP_FACTOR = 0.85
-
 export function useCustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
@@ -23,12 +20,9 @@ export function useCustomCursor() {
     let initialized = false
 
     const animate = () => {
-      const lerpFactor = ringRef.current?.classList.contains('ring-active')
-        ? HOVER_LERP_FACTOR
-        : NORMAL_LERP_FACTOR
 
-      ringX += (mouseX - ringX) * lerpFactor
-      ringY += (mouseY - ringY) * lerpFactor
+      ringX += (mouseX - ringX)
+      ringY += (mouseY - ringY)
 
       if (ringRef.current) {
         ringRef.current.style.left = `${ringX}px`

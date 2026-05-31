@@ -1,11 +1,7 @@
 import { useEffect, type RefObject } from 'react'
 
 const INK_SELECTOR = [
-  'a', 'button',
-  '.skill-chip', '.social-btn', '.about-tag-pill',
-  '.stat-card', '.bio-block',
-  '.nav-tab', '.btn-primary', '.btn-ghost', '.pcard', '.pcard-open',
-  '.social-btn', '.footer-link-row a',
+  'a', 'button', 'input', 'textarea', 'select', 'label',
 ].join(', ')
 
 export function useInkSpot(dotRef: RefObject<HTMLDivElement | null>, ringRef: RefObject<HTMLDivElement | null>) {
@@ -21,7 +17,8 @@ export function useInkSpot(dotRef: RefObject<HTMLDivElement | null>, ringRef: Re
     document.querySelectorAll<HTMLElement>(INK_SELECTOR).forEach(el => {
       const enter = () => {
         if (dotRef.current) {
-          dotRef.current.classList.add('is-hidden')
+          //dotRef.current.classList.add('is-hidden')
+          dotRef.current?.classList.add('dot-active')
         }
         if (ringRef.current) {
           ringRef.current.classList.add('ring-active')
@@ -31,7 +28,7 @@ export function useInkSpot(dotRef: RefObject<HTMLDivElement | null>, ringRef: Re
 
       const leave = () => {
         if (dotRef.current) {
-          dotRef.current.classList.remove('is-hidden')
+          dotRef.current.classList.remove('dot-active')
         }
         if (ringRef.current) {
           ringRef.current.classList.remove('ring-active')

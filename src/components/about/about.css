@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 .stat-node {
   background: var(--bg-card);
@@ -39,8 +39,8 @@
 }
 
 .about-text-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 .about-card {
@@ -48,6 +48,8 @@
   border: 1px solid var(--border);
   border-radius: var(--r);
   padding: 32px;
+  width: 100%; 
+  box-sizing: border-box;
 }
 .about-card.span-full {
   grid-column: span 2;
@@ -68,20 +70,66 @@
   font-weight: 500;
 }
 
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0; 
+}
+
+.experience-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+  
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.experience-item:first-child {
+  padding-top: 0;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 .experience-header {
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
+  width: 100%;
 }
+
+.exp-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
 .exp-role {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text);
 }
+
+
+.exp-duration {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 .exp-firm {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--purple-light);
+  margin-top: 4px;
 }
 
 .interests-pill-box {

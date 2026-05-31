@@ -160,8 +160,8 @@ const PROJECTS: Project[] = [
     name:        '3D Model Inspector',
     filename:    'model_inspector.cpp',
     langColor:   '#659AD2',
-    description: 'Custom OBJ parser with PBR shading, shadow mapping, and a fully hand-rolled shader pipeline — no asset libraries.',
-    detail:      'Every vertex, normal, and face is read by hand. Working this close to the metal taught me more about the graphics stack than any tutorial — one of my first serious C++ projects.',
+    description: 'Custom OBJ parser with PBR shading, shadow mapping, and a fully hand-rolled shader pipeline - no asset libraries.',
+    detail:      'Every vertex, normal, and face is read by hand. Working this close to the metal taught me more about the graphics stack than any tutorial - one of my first serious C++ projects.',
     image:       './image1.png',
     imgPosition: 'center',
     tags:        ['OpenGL', 'PBR Shaders', '3D Graphics'],
@@ -385,7 +385,7 @@ export default function Projects() {
     <section className="projects-section" id="projects">
 
       <div className="section-centered-header">
-        <p className="section-tag">projects.rs — pub mod portfolio</p>
+        <p className="section-tag">projects.rs - pub mod portfolio</p>
         <h2 className="section-display-title">
           Things I've <span className="marked">shipped</span>
         </h2>

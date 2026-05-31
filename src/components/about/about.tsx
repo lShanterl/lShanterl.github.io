@@ -17,6 +17,57 @@ const INTERESTS = [
   'Volleyball', 'Science', "Debugging Complexity"
 ]
 
+interface Job {
+  id: string,
+  role: string,
+  firm: string,
+  description: React.ReactNode, 
+  startDate: string,
+  duration: string,
+}
+
+const EXPERIENCES: Job[] = [
+  {
+    id: 'dt-poland',
+    role: 'Software & QA Intern',
+    firm: 'Digital Technology Poland',
+    duration: 'March 2025 - April 2025', 
+    startDate: '2025-03',
+    description: (
+      <>
+        Engineered Digital Twin solutions for the industrial energy sector. Automated end-to-end testing pipelines using <strong>Playwright</strong> and architected robust hardware data flows, focusing heavily on system regression metrics and fault-tolerant architectures.
+      </>
+    )
+  },
+  {
+    id: 'zzoz-hospital',
+    role: 'Mobile App Developer Intern',
+    firm: 'Zespół Zakładów Opieki Zdrowotnej',
+    duration: 'May 2024 - Jun 2024',
+    startDate: '2024-05',
+    description: (
+      <>
+        Architected and deployed a custom mobile application from scratch to digitalize medical equipment tracking at a local hospital. Conducted user-centric interviews with healthcare staff to optimize UX, eliminating data-entry bottlenecks and ensuring high-performance querying across thousands of inventory items.
+      </>
+    )
+  }
+]
+
+function ExperienceItem({ job }: { job: Job }) {
+  return (
+    <div className="experience-item">
+      <div className="experience-header">
+        <div className="exp-title-row">
+          <span className="exp-role">{job.role}</span>
+          <span className="exp-duration">{job.duration}</span>
+        </div>
+        <span className="exp-firm">@ {job.firm}</span>
+      </div>
+      <p className="card-body-text">{job.description}</p>
+    </div>
+  )
+}
+
 function useCountUp(num: number, active: boolean, duration = 1300) {
   const [display, setDisplay] = useState(0)
   useEffect(() => {
@@ -35,6 +86,10 @@ function useCountUp(num: number, active: boolean, duration = 1300) {
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const sortedExperiences = [...EXPERIENCES].sort(
+    (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+  )
 
   return (
     <section className="about section-wrapper" id="about" ref={ref}>
@@ -60,28 +115,21 @@ export default function About() {
 
         <div className="about-text-grid">
           <motion.div className="about-card" {...fadeUp(0.1)}>
-            <p className="card-comment-tag">/** background **/</p>
+            <p className="card-comment-tag">/** approach **/</p>
             <p className="card-body-text">
-              I specialize in writing close-to-the-metal software where memory safety and execution speed 
-              are non-negotiable—primarily in <strong>C++</strong> and <strong>Rust</strong>.
-              My work centers on bare-metal development for microcontrollers, custom 3D graphics engines,
-              and optimizing system components beneath traditional abstraction layers.
+              I choose to work on complex optimization problems where efficiency isn't just a bonus, but a strict requirement.
+              My goal is always to build clean, predictable software with a deep understanding of the underlying hardware, preferring direct control over layered abstractions.
             </p>
           </motion.div>
 
           <motion.div className="about-card" {...fadeUp(0.2)}>
             <p className="card-comment-tag">/** commercial experience **/</p>
-            <div className="experience-header">
-              <span className="exp-role">Software & QA Intern</span>
-              <span className="exp-firm">@ Digital Technology Poland</span>
-            </div>
-            <p className="card-body-text">
-              Engineered Digital Twin solutions for the industrial energy sector. Automated end-to-end testing pipelines using <strong>Playwright </strong>
-              and architected robust hardware data flows, focusing heavily on system regression metrics and fault-tolerant architectures.
-            </p>
+            {sortedExperiences.map((job, index) => (
+              <ExperienceItem key={index} job={job} />
+            ))}
           </motion.div>
 
-          <motion.div className="about-card span-full" {...fadeUp(0.3)}>
+          <motion.div className="about-card" {...fadeUp(0.3)}>
             <p className="card-comment-tag">/** core interests **/</p>
             <div className="interests-pill-box">
               {INTERESTS.map(tag => (

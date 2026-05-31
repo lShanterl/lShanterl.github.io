@@ -69,12 +69,10 @@ export default function Skills() {
 
       <div className="skills-layout-container">
         <motion.div className="skills-focus-banner" {...fadeUp(0.1)}>
-          <span className="banner-eyebrow">Core Competence Focus</span>
+          <span className="banner-eyebrow">#define FOCUS</span>
           <p className="banner-text">
-          I bridge the gap between strict hardware constraints and software execution. 
-          Instead of relying on heavy runtime environments, my focus is on writing deterministic,
-          low-overhead code, minimizing cache misses via data-oriented design, and implementing models   
-          that keep performance-critical systems running without failure.
+          Writing deterministic, low-overhead code by eliminating heavy runtimes and minimizing cache misses via data-oriented design.
+          I focus on bridging the gap between strict hardware constraints and software execution to keep critical systems stable.
           </p>
         </motion.div>
 
