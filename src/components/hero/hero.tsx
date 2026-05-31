@@ -238,7 +238,6 @@ export default function Hero() {
                   autoComplete="off"
                   autoCorrect="off"
                   autoCapitalize="off"
-                  autoFocus
                   spellCheck="false"
                 />
               </form>

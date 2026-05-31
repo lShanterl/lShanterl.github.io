@@ -166,7 +166,7 @@ export default function Contact() {
   return (
     <section className="contact section-wrapper" id="contact">
       <motion.div className="section-centered-header" {...fadeUp(0)}>
-        <p className="section-tag">contact.py — class ContactForm</p>
+        <p className="section-tag">contact.py - class ContactForm</p>
         <h2 className="section-display-title">
           Get in <span className="marked">Touch</span>
         </h2>
