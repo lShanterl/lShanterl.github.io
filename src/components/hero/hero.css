@@ -79,6 +79,8 @@
   letter-spacing: -0.03em;
   color: var(--text);
   position: relative;
+  word-break: keep-all;
+  white-space: pre-wrap;
 }
 
 .hero-subtitle {

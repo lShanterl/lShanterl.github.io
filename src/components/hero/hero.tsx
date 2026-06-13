@@ -74,11 +74,12 @@ function useTerminal() {
   return { lines, busy }
 }
 
+const PILL_TAGS = ['C++', 'Rust', 'Embedded', 'Graphics', 'Game Dev']
+
 export default function Hero() {
   const { lines, busy } = useTerminal()
   const [terminalInput, setTerminalInput] = useState('')
   const [customOutputs, setCustomOutputs] = useState<string[]>([])
-
   const terminalBodyRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -95,7 +96,6 @@ export default function Hero() {
     const cmd = terminalInput.trim().toLowerCase()
     if (!cmd) return
 
-    //TODO: move easter eggs hook to the console instead of toast??
     let out = `command not found: ${cmd}. Try 'help' or 'clear'.`
     if (cmd === 'help') out = 'Available commands: help, cat resume, clear, matrix, npm install, sudo, git blame'
     if (cmd === 'cat resume') out = 'Opening resume asset link context...'
@@ -104,9 +104,7 @@ export default function Hero() {
     if (cmd === 'sudo') out = 'nice try. permission denied.'
     if (cmd === 'git blame') out = 'it was definitely not me.'
     
-    if (cmd === 'cat resume') {
-      window.open('/resume.pdf', '_blank')
-    }
+    if (cmd === 'cat resume') window.open('/resume.pdf', '_blank')
 
     if (cmd === 'clear') {
       setCustomOutputs([])
@@ -123,29 +121,71 @@ export default function Hero() {
 
       <div className="hero-inner">
         <div className="hero-text">
+
           <motion.p
             className="hero-eyebrow"
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -32 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
           >
             PORTFOLIO — {new Date().getFullYear()}
           </motion.p>
 
           <motion.h1
             className="hero-name"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.028, delayChildren: 0.15 } }
+            }}
           >
-            Bartosz Starzyk<span className="marked">.</span>
+          {"Bartosz Starzyk".split(" ").map((word, wordIdx) => {
+            const isLastWord = wordIdx === 1; 
+          
+            return (
+              <span key={wordIdx} style={{ whiteSpace: 'nowrap', display: 'inline-block' }}>
+                {word.split("").map((ch, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 40, rotateX: -90 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        rotateX: 0,
+                        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+                      }
+                    }}
+                    style={{ display: 'inline-block', transformOrigin: 'bottom center' }}
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
+
+                {isLastWord && (
+                  <motion.span
+                    className="marked"
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.5 },
+                      visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1], delay: 0.55 } }
+                    }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    .
+                  </motion.span>
+                )}
+
+                {!isLastWord && '\u00A0'}
+              </span>
+            );
+          })}
           </motion.h1>
 
           <motion.p
             className="hero-subtitle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.42 }}
           >
             <strong>Systems & Embedded Developer</strong> from Poland.
             Specializing in embedded systems, graphics programming, and performance-critical software using C++ and Rust.
@@ -153,34 +193,59 @@ export default function Hero() {
 
           <motion.div
             className="hero-pills"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.07, delayChildren: 0.58 } } }}
           >
-            {['C++', 'Rust', 'Embedded', 'Graphics', 'Game Dev'].map(tag => (
-              <span className="hero-pill" key={tag}>{tag}</span>
+            {PILL_TAGS.map(tag => (
+              <motion.span
+                className="hero-pill"
+                key={tag}
+                variants={{
+                  hidden: { opacity: 0, scale: 0.75, y: 10 },
+                  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 380, damping: 22 } }
+                }}
+              >
+                {tag}
+              </motion.span>
             ))}
           </motion.div>
 
           <motion.div
             className="hero-cta"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.09, delayChildren: 0.72 } } }}
           >
-            <a className="btn-primary" href="#projects">./view-projects</a>
-            <a className="btn-secondary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-              <span className="resume-icon">↓</span> download_resume()
-            </a>
-            <a className="btn-ghost" href="#contact">get_in_touch()</a>
+            {[
+              { cls: 'btn-primary',   href: '#projects',         label: './view-projects' },
+              { cls: 'btn-secondary', href: '/resume.pdf',       label: '↓ download_resume()', target: '_blank' },
+              { cls: 'btn-ghost',     href: '#contact',          label: 'get_in_touch()' },
+            ].map(btn => (
+              <motion.a
+                key={btn.label}
+                className={btn.cls}
+                href={btn.href}
+                target={btn.target}
+                rel={btn.target ? 'noopener noreferrer' : undefined}
+                variants={{
+                  hidden: { opacity: 0, y: 18, scale: 0.95 },
+                  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 350, damping: 20 } }
+                }}
+                whileHover={{ y: -2, transition: { type: 'spring', stiffness: 500, damping: 25 } }}
+                whileTap={{ scale: 0.97 }}
+              >
+                {btn.label}
+              </motion.a>
+            ))}
           </motion.div>
         </div>
 
         <motion.div
           className="hero-terminal"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          initial={{ opacity: 0, scale: 0.92, y: 28 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
         >
           <div className="terminal-bar">
             <div className="terminal-dots">
@@ -193,47 +258,45 @@ export default function Hero() {
 
           <div className="terminal-body" ref={terminalBodyRef}>
             {lines.map((line, i) => (
-              <div className="t-line" key={i}>
+              <motion.div
+                className="t-line"
+                key={i}
+              >
                 {line.kind === 'cmd' ? (
                   <>
-                    <span className="t-prompt">
-                      <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
-                    </span>
+                    <span className="t-prompt"><span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;</span>
                     <span className="t-cmd">{line.text}</span>
                   </>
                 ) : (
-                  <span className={`t-out${line.success ? ' success' : ''}`}>
-                    {line.text}
-                  </span>
+                  <span className={`t-out${line.success ? ' success' : ''}`}>{line.text}</span>
                 )}
-              </div>
+              </motion.div>
             ))}
 
             {customOutputs.map((out, i) => (
-              <div key={i} className="t-line custom-out">
+              <motion.div
+                key={`custom-${i}`}
+                className="t-line custom-out"
+              >
                 {i % 2 === 0 ? (
                   <>
-                  <span className="t-prompt">
-                    <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
-                  </span>
-                  <span className="t-cmd">{out.replace(/^shanter@dev ~ \$ /, '')}</span>
+                    <span className="t-prompt"><span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;</span>
+                    <span className="t-cmd">{out.replace(/^shanter@dev ~ \$ /, '')}</span>
                   </>
                 ) : (
                   <span className="t-out">{out}</span>
                 )}
-              </div>
+              </motion.div>
             ))}
 
             {!busy && (
               <form onSubmit={handleTerminalSubmit} className="t-form-line">
-                <span className="t-prompt">
-                  <span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;
-                </span>
+                <span className="t-prompt"><span>shanter</span>@dev&nbsp;~&nbsp;$&nbsp;</span>
                 <input
                   type="text"
                   className="t-input"
                   value={terminalInput}
-                  onChange={(e) => setTerminalInput(e.target.value)}
+                  onChange={e => setTerminalInput(e.target.value)}
                   placeholder="type 'help'..."
                   autoComplete="off"
                   autoCorrect="off"
@@ -246,10 +309,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="hero-scroll">
-        <span className="scroll-line" />
+      <motion.div
+        className="hero-scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+      >
+        <motion.div
+          className="scroll-line"
+          animate={{ scaleY: [1, 0.4, 1], opacity: [0.8, 0.3, 0.8] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        />
         scroll
-      </div>
+      </motion.div>
     </section>
   )
 }

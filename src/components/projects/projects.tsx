@@ -1,6 +1,7 @@
 import './projects.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import type { Variants } from 'framer-motion'
 
 type DomainCategory = 'All' | 'Games' | 'Systems' | 'Web & Mobile'
 
@@ -192,6 +193,24 @@ const PROJECTS: Project[] = [
   },
 ]
 
+const featuredVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, scale: 1,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 }
+  }),
+  exit: { opacity: 0, scale: 0.96, transition: { duration: 0.2 } }
+}
+ 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.07 }
+  }),
+  exit: { opacity: 0, scale: 0.95, y: -8, transition: { duration: 0.18 } }
+}
+
 const DOMAINS: DomainCategory[] = ['All', 'Games', 'Systems', 'Web & Mobile']
 
 const getStartYear = (yearStr: string): number => {
@@ -208,9 +227,12 @@ function FeaturedCard({ p }: { p: Project }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       layout
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      variants={featuredVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+      exit="exit"
+      whileHover={{ y: -4, transition: { type: 'spring', stiffness: 350, damping: 22 } }}
     >
       <div className="featured-topbar">
         <span className="featured-dot" style={{ background: p.langColor }} />
@@ -292,9 +314,17 @@ function ProjectCard({ p }: { p: Project }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       layout
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-40px' }}
+      exit="exit"
+      whileHover={{
+        y: -3,
+        borderColor: 'rgba(168, 85, 247, 0.45)',
+        boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15)',
+        transition: { type: 'spring', stiffness: 400, damping: 24 }
+      }}
     >
       <div className="std-tab">
         <span className="std-dot" style={{ background: p.langColor }} />
@@ -384,6 +414,7 @@ export default function Projects() {
   return (
     <section className="projects-section" id="projects">
 
+    <div className=''>
       <div className="section-centered-header">
         <p className="section-tag">projects.rs - pub mod portfolio</p>
         <h2 className="section-display-title">
@@ -391,19 +422,20 @@ export default function Projects() {
         </h2>
       </div>
 
-      <div className="filters-container">
-        <nav className="filter-row" aria-label="Category">
-          {DOMAINS.map(d => (
-            <button
-              key={d}
-              className={`chip${activeDomain === d ? ' chip--active' : ''}`}
-              onClick={() => { setActiveDomain(d); setActiveLang('All') }}
-            >
-              {d === 'All' ? 'all' : d.toLowerCase().replace(' & ', '_')}
-            </button>
-          ))}
-        </nav>
-
+      <div className='filters'>
+        <div className="filters-container">
+          <nav className="filter-row" aria-label="Category">
+            {DOMAINS.map(d => (
+              <button
+                key={d}
+                className={`chip${activeDomain === d ? ' chip--active' : ''}`}
+                onClick={() => { setActiveDomain(d); setActiveLang('All') }}
+              >
+                {d === 'All' ? 'all' : d.toLowerCase().replace(' & ', '_')}
+              </button>
+            ))}
+          </nav>
+        </div>
         <nav className="filter-row filter-row--sub" aria-label="Language">
           {availableLanguages.map(lang => {
             const has = PROJECTS.some(p =>
@@ -422,6 +454,8 @@ export default function Projects() {
           })}
         </nav>
       </div>
+      </div>
+
 
       <AnimatePresence mode="popLayout">
         {featuredProjects.length > 0 && (
@@ -449,10 +483,12 @@ export default function Projects() {
               key="future"
               className="pcard-std pcard-future"
               layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            exit="exit"
+
             >
               <div className="future-inner">
                 <span className="future-plus">+</span>

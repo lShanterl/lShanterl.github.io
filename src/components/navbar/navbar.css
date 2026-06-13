@@ -11,8 +11,16 @@
   height: var(--nav-height);
   background: rgba(7, 7, 26, 0.85);
   backdrop-filter: blur(20px) saturate(140%);
-  border-bottom: 1px solid var(--border); 
+  border-bottom: 1px solid var(--border);
   font-family: var(--font-mono);
+}
+
+.navbar {
+  animation: nav-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes nav-enter {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .nav-logo {
@@ -23,8 +31,8 @@
   gap: 8px;
   text-decoration: none;
   color: var(--text);
-  font-size: clamp(0.82rem, 1.5vh, 1.2rem); 
-   font-weight: 500;
+  font-size: clamp(0.82rem, 1.5vh, 1.2rem);
+  font-weight: 500;
   white-space: nowrap;
   transition: color 0.2s;
   cursor: none;
@@ -49,61 +57,106 @@
   flex: 1;
   overflow: hidden;
 }
+
 .nav-tab {
   display: flex;
   align-items: center;
   gap: 7px;
   padding: 0 20px;
   border-right: 1px solid var(--border);
-  font-size: clamp(0.78rem, 1.5vh, 1.13rem); 
+  font-size: clamp(0.78rem, 1.5vh, 1.13rem);
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s, background 0.2s;
   white-space: nowrap;
   cursor: none;
   position: relative;
+  overflow: hidden;
 }
+
 .nav-tab::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
   height: 2px;
-  background: transparent;
-  transition: background 0.2s;
+  background: var(--purple);
+  transition: left 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              right 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.2s;
 }
 .nav-tab:hover {
   color: var(--text);
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
-.nav-tab:hover::after { background: var(--purple); }
-.nav-tab.active { color: var(--text); background: rgba(255,255,255,0.04); }
-.nav-tab.active::after { background: var(--purple-light); }
+.nav-tab:hover::after {
+  left: 0;
+  right: 0;
+  background: var(--purple);
+}
+.nav-tab.active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-tab.active::after {
+  left: 0;
+  right: 0;
+  background: var(--purple-light);
+}
+
+.nav-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(147, 51, 234, 0.06) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-tab:hover::before,
+.nav-tab.active::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
 
 .lang-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   flex-shrink: 0;
+  transition: box-shadow 0.2s;
 }
+.nav-tab:hover .lang-dot,
+.nav-tab.active .lang-dot {
+  box-shadow: 0 0 6px currentColor;
+}
+
 .navbar-percentage-actual {
   position: absolute;
-  bottom: 0; left: 0;
+  bottom: 0;
+  left: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--purple), var(--cyan));
-  transition: linear;
-  
 }
-.nav-progress{
+
+.nav-progress {
   display: flex;
   align-items: center;
 }
-.nav-progress-percentage{
+.nav-progress-percentage {
   font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1.5vh, 1.13rem); 
+  font-size: clamp(0.7rem, 1.5vh, 1.13rem);
   color: var(--purple-light);
   padding: 0 2.0vh;
   margin-left: auto;
 }
+
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -121,7 +174,8 @@
   width: 20px;
   height: 1.5px;
   background: currentColor;
-  transition: transform 0.25s, opacity 0.25s;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s;
   border-radius: 1px;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -148,12 +202,13 @@
   text-decoration: none;
   font-size: 0.9rem;
   border-bottom: 1px solid var(--border);
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.2s, background 0.2s, padding-left 0.2s;
   cursor: none;
 }
 .nav-mobile-menu a:hover {
   color: var(--text);
   background: rgba(147, 51, 234, 0.08);
+  padding-left: 32px;
 }
 
 @media (min-width: 1440px) {
@@ -178,12 +233,6 @@
 }
 
 @media (max-width: 420px) {
-  .nav-logo {
-    padding: 0 14px;
-    font-size: 0.74rem;
-  }
-
-  .nav-hamburger {
-    padding: 0 14px;
-  }
+  .nav-logo { padding: 0 14px; font-size: 0.74rem; }
+  .nav-hamburger { padding: 0 14px; }
 }

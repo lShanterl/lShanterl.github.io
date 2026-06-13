@@ -44,6 +44,9 @@ body {
   transform: translate(-50%, -50%) scale(0.2);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
+.cursor-disabled {
+  display: none;
+}
 
 .cursor-ring {
   position: fixed;
