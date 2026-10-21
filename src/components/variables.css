@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
+  --white-rgb:  255, 255, 255;
   --bg-deep:    #080504;
   --bg:         #100B08;
   --bg-card:    rgba(28, 19, 14, 0.45);

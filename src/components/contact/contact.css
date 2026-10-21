@@ -250,11 +250,6 @@
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 8px var(--green);
-  animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-@keyframes status-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(1.05); }
 }
 .cip-status-text {
   font-family: var(--font-mono);
@@ -323,21 +318,22 @@
 }
 
 .cip-social-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 .cip-social-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.01);
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   text-decoration: none;
   color: var(--text-dim);
   transition: all 0.2s ease;
+  min-width: 0;
 }
 .cip-social-btn:hover {
   border-color: var(--border-active);
@@ -349,16 +345,21 @@
   flex-direction: column;
   flex: 1;
   text-align: left;
+  min-width: 0;
 }
 .csb-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--text);
+  white-space: nowrap;
 }
 .csb-sub {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .csb-arrow {
   font-size: 0.8rem;

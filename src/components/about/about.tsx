@@ -191,9 +191,11 @@ export default function About() {
             whileHover={{ borderColor: 'rgba(255, 160, 87, 0.35)', transition: { duration: 0.2 } }}
           >
             <p className="card-comment-tag">/** commercial experience **/</p>
-            {sortedExperiences.map((job, index) => (
-              <ExperienceItem key={job.id} job={job} index={index} />
-            ))}
+            <div className="experience-list">
+              {sortedExperiences.map((job, index) => (
+                <ExperienceItem key={job.id} job={job} index={index} />
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
