@@ -1,7 +1,7 @@
 .bsod {
   position: fixed;
   inset: 0;
-  background: #0000AA;
+  background: var(--bsod-bg);
   color: #fff;
   font-family: "Courier New", monospace;
   font-size: 14px;

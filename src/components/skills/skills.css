@@ -80,10 +80,10 @@
   color: var(--text-dim);
   white-space: nowrap;
 }
-.skill-import .keyword { color: #ff79c6; }
-.skill-import .braces { color: #f8f8f2; }
-.skill-import .variables { color: #bd93f9; }
-.skill-import .string { color: #f1fa8c; }
+.skill-import .keyword   { color: #FFA057; }
+.skill-import .braces    { color: #A89686; }  
+.skill-import .variables { color: #2DD4BF; } 
+.skill-import .string    { color: #E9C46A; }
 
 .ide-card-body {
   display: flex;
@@ -100,7 +100,7 @@
   border: 1px solid var(--border);
   padding: 10px 18px;
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: color 0.15s ease;
 }
 .badge-icon {
   width: 16px;
@@ -121,13 +121,8 @@
   background: var(--border);
   border-radius: 2px;
 }
-.skill-item-badge:hover {
-  background: rgba(147, 51, 234, 0.05);
-  border-color: var(--purple-light);
-  transform: translateY(-1px);
-}
 .skill-item-badge:hover .badge-name {
-  color: var(--text);
+  color: var(--purple-light);
 }
 
 

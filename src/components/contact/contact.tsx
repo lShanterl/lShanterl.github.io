@@ -26,6 +26,12 @@ const CheckIcon = () => (
     <polyline points="20 6 9 17 4 12" />
   </svg>
 )
+const LeetCodeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="15 4 5 12 15 20"></polyline>
+    <line x1="12" y1="12" x2="20" y2="12"></line>
+  </svg>
+)
 const ResumeIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18" strokeLinecap="round" strokeLinejoin="round">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -162,7 +168,7 @@ export default function Contact() {
       showToast('Copying fallback un-supported by client browser environment.')
       return
     }
-    navigator.clipboard.writeText('barteksta00@gmail.com')
+    navigator.clipboard.writeText('shanter.me@gmail.com')
       .then(() => {
         setEmailCopied(true)
         showToast('> Email copied to clipboard, good choice!')
@@ -292,7 +298,7 @@ export default function Contact() {
             </div>
             <div className="cip-meta-row">
               <span className="cip-meta-key">location</span>
-              <span className="cip-meta-val">Katowice, PL</span>
+              <span className="cip-meta-val">Kraków, PL</span>
             </div>
             <div className="cip-meta-row">
               <span className="cip-meta-key">local_time</span>
@@ -316,7 +322,7 @@ export default function Contact() {
           <div className="cip-block">
             <span className="cip-comment">/** direct_line **/</span>
             <button className="cip-email-row" onClick={copyEmail} type="button">
-              <span className="cip-email-addr">barteksta00@gmail.com</span>
+              <span className="cip-email-addr">shanter.me@gmail.com</span>
               <motion.span
                 className="cip-copy-icon"
                 animate={emailCopied ? { scale: [1, 1.2, 1] } : {}}
@@ -343,6 +349,14 @@ export default function Contact() {
                 <div className="csb-text">
                   <span className="csb-label">LinkedIn</span>
                   <span className="csb-sub">shanterbs</span>
+                </div>
+                <span className="csb-arrow">↗</span>
+              </a>
+              <a className="cip-social-btn" href="https://leetcode.com/u/Shanter/" target="_blank" rel="noreferrer">
+                <LeetCodeIcon />
+                <div className="csb-text">
+                  <span className="csb-label">LeetCode</span>
+                  <span className="csb-sub">Shanter</span>
                 </div>
                 <span className="csb-arrow">↗</span>
               </a>

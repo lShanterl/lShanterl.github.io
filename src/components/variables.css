@@ -2,34 +2,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --bg-deep:    #03030A;
-  --bg:         #060614;
-  --bg-card:    rgba(15, 15, 35, 0.45);
-  --bg-card-2:  rgba(25, 25, 55, 0.65);
+  --bg-deep:    #080504;
+  --bg:         #100B08;
+  --bg-card:    rgba(28, 19, 14, 0.45);
+  --bg-card-2:  rgba(40, 28, 20, 0.65);
 
-  --purple:       #9333EA;
-  --purple-light: #A855F7;
-  --purple-dim:   rgba(147, 51, 234, 0.15);
-  --cyan:         #06B6D4;
-  --cyan-dim:     rgba(6, 182, 212, 0.12);
-  --orange:       #F97316;
-  --orange-dim:   rgba(249, 115, 22, 0.12);
+  
+  --purple:       #FF7A1A;
+  --purple-light: #FFA057;
+  --purple-dim:   rgba(255, 122, 26, 0.15);
+  --cyan:         #2DD4BF;
+  --cyan-dim:     rgba(45, 212, 191, 0.12);
+  --orange:       #FACC15;
+  --orange-dim:   rgba(250, 204, 21, 0.12);
   --green:        #22C55E;
 
-  --text:         #F3F0FF;  
-  --text-dim:     #B4B0D0;  /* boosted from #9B96B8 for legible body text */
-  --text-muted:   #7E7A9A;  /* boosted from #52506A for readable micro-labels */
-  --text-subtle-gold: #f1fa8c;  /* for subtle emphasis on important details */
+  --text:         #FBF1E8;  
+  --text-dim:     #CBB8A8; 
+  --text-muted:   #8F7B6B;  
+  --text-subtle-gold: #f1fa8c;
 
-  --text-unimportant: #5A5772;  /* for less important text elements */
+  --text-unimportant: #6B5A4D;  
 
   --border:         rgba(255, 255, 255, 0.09);
-  --border-active:  rgba(168, 85, 247, 0.45);
-  --border-cyan:    rgba(6, 182, 212, 0.4);
+  --border-active:  rgba(255, 160, 87, 0.45);
+  --border-cyan:    rgba(45, 212, 191, 0.4);
 
-  --glow-purple: 0 0 60px rgba(147, 51, 234, 0.15);
-  --glow-cyan:   0 0 60px rgba(6, 182, 212, 0.12);
-  --glow-golden: 0 0 60px rgba(249, 115, 22, 0.12);
+  --glow-purple: 0 0 60px rgba(255, 122, 26, 0.15);
+  --glow-cyan:   0 0 60px rgba(45, 212, 191, 0.12);
+  --glow-golden: 0 0 60px rgba(250, 204, 21, 0.12);
 
   --title-gradient: linear-gradient(90deg, var(--text) 0%, var(--purple-light) 100%);
 
@@ -43,8 +44,10 @@
 
   --lang-tsx:    #61DAFB;
   --lang-cpp:    #659AD2;
-  --lang-rs:     #F74C00;
+  --lang-rs:     #E5483A;
   --lang-py:     #FFD43B;
   --lang-go:     #00ACD7;
   --lang-js:     #F7DF1E;
+
+  --bsod-bg:  #0033BB;
 }

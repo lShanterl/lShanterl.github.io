@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const TABS = [
   { label: 'about.tsx',    href: '#about',    color: '#61DAFB' },
   { label: 'skills.cpp',   href: '#skills',   color: '#659AD2' },
-  { label: 'projects.rs',  href: '#projects', color: '#F74C00' },
+  { label: 'projects.rs',  href: '#projects', color: '#E5483A' },
   { label: 'contact.py',   href: '#contact',  color: '#FFD43B' },
 ]
 

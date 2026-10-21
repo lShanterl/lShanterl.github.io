@@ -25,6 +25,23 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    name:        "Pico Matrix Studio",
+    filename:    "ws2812.rs",
+    langColor:   "#dea584",
+    description: "An end-to-end, Wi-Fi-enabled LED matrix ecosystem powered by Raspberry Pi Pico W.",
+    detail:      "A complete hardware-software solution built with asynchronous Rust (Embassy). Features a desktop suite for real-time animation design, persistent sequence storage in the Pico's flash memory, and a dynamic current-limiting algorithm to safely drive power-hungry WS2812 LEDs.",
+    image:       "./pico_matrix.png",
+    imgPosition: "center",
+    link:        "https://github.com/lShanterl/pico-matrix-studio",
+    tags:        ["Embedded Rust", "Wi-Fi", "Hardware"],
+    languages:   ["Rust","Typescript","Tauri"],
+    domain:      "Systems",
+    size:        "featured",
+    role:        "Embedded & full-stack engineer",
+    metric:      { label: "RUNTIME", value: "Bare-metal Async" },
+    year:        "2026",
+  },
+  {
     name:        'Chip-8 Emulator',
     filename:    'chip8_emulator.cpp',
     langColor:   '#2d9951',
@@ -321,8 +338,8 @@ function ProjectCard({ p }: { p: Project }) {
       exit="exit"
       whileHover={{
         y: -3,
-        borderColor: 'rgba(168, 85, 247, 0.45)',
-        boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15)',
+        borderColor: 'rgba(255, 160, 87, 0.45)',
+        boxShadow: '0 8px 32px rgba(255, 122, 26, 0.15)',
         transition: { type: 'spring', stiffness: 400, damping: 24 }
       }}
     >
@@ -394,13 +411,16 @@ function ProjectCard({ p }: { p: Project }) {
   )
 }
 
+// Tools shown on project cards but not offered as language filters
+const HIDDEN_FILTERS = new Set(['tauri', 'tailwind css'])
+
 export default function Projects() {
   const [activeDomain, setActiveDomain] = useState<DomainCategory>('All')
   const [activeLang,   setActiveLang]   = useState<string>('All')
 
   const availableLanguages = ['All', ...Array.from(
     new Set(PROJECTS.flatMap(p => p.languages))
-  )]
+  ).filter(l => !HIDDEN_FILTERS.has(l.toLowerCase()))]
 
   const filteredSortedProjects = PROJECTS.filter(p => {
     const matchesDomain = activeDomain === 'All' || p.domain === activeDomain

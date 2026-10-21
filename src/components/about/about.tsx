@@ -106,8 +106,8 @@ function StatNode({ stat, index, active }: { stat: typeof STATS[0]; index: numbe
       }}
       whileHover={{
         scale: 1.04,
-        borderColor: 'rgba(168, 85, 247, 0.5)',
-        boxShadow: '0 0 24px rgba(147, 51, 234, 0.18)',
+        borderColor: 'rgba(255, 160, 87, 0.5)',
+        boxShadow: '0 0 24px rgba(255, 122, 26, 0.18)',
         transition: { type: 'spring', stiffness: 400, damping: 22 }
       }}
     >
@@ -172,7 +172,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             custom={0.05}
-            whileHover={{ borderColor: 'rgba(168, 85, 247, 0.35)', transition: { duration: 0.2 } }}
+            whileHover={{ borderColor: 'rgba(255, 160, 87, 0.35)', transition: { duration: 0.2 } }}
           >
             <p className="card-comment-tag">/** approach **/</p>
             <p className="card-body-text">
@@ -188,7 +188,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             custom={0.15}
-            whileHover={{ borderColor: 'rgba(168, 85, 247, 0.35)', transition: { duration: 0.2 } }}
+            whileHover={{ borderColor: 'rgba(255, 160, 87, 0.35)', transition: { duration: 0.2 } }}
           >
             <p className="card-comment-tag">/** commercial experience **/</p>
             {sortedExperiences.map((job, index) => (
@@ -203,7 +203,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             custom={0.25}
-            whileHover={{ borderColor: 'rgba(168, 85, 247, 0.35)', transition: { duration: 0.2 } }}
+            whileHover={{ borderColor: 'rgba(255, 160, 87, 0.35)', transition: { duration: 0.2 } }}
           >
             <p className="card-comment-tag">/** core interests **/</p>
             <motion.div
@@ -222,7 +222,7 @@ export default function About() {
                     visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 350, damping: 20 } }
                   }}
                   whileHover={{ 
-                    borderColor: 'rgba(168, 85, 247, 0.5)', 
+                    borderColor: 'rgba(255, 160, 87, 0.5)', 
                     color: 'var(--purple-light)',
                     scale: 1.05,
                     transition: { duration: 0.15 }

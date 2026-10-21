@@ -45,8 +45,8 @@
   font-size: 0.72rem;
   color: var(--text-muted);
 }
-.footer-copy .kw  { color: #C792EA; }
-.footer-copy .str { color: #C3E88D; }
+.footer-copy .kw  { color: var(--syn-keyword); }
+.footer-copy .str { color: var(--syn-number); }
 
 @media (max-width: 640px) {
   .footer-inner {

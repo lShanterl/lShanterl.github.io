@@ -149,11 +149,9 @@ export default function Skills() {
                     viewport={{ once: true }}
                     custom={si}
                     whileHover={{
-                      y: -3,
-                      scale: 1.04,
-                      borderColor: 'rgba(168, 85, 247, 0.6)',
-                      boxShadow: '0 4px 18px rgba(147, 51, 234, 0.2)',
-                      transition: { type: 'spring', stiffness: 450, damping: 22 }
+                      borderColor: 'rgba(255, 160, 87, 0.5)',
+                      scale: 1.05,
+                      transition: { duration: 0.15 }
                     }}
                     whileTap={{ scale: 0.97 }}
                   >
