@@ -25,6 +25,23 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    name:        "Dice Fighter",
+    filename:    "dice_fighter.cs",
+    langColor:   "#A8B5C2",
+    description: "Top-down roguelike game made with a friend in 48 hours for 2022 GMTK Game Jam.",
+    detail:      "Player roll dice to determine their gun, ammo type and armor. The catch is that your equipment changes after the 3 dice roll and it happens every 5 seconds.",
+    image:       "./dice_fighter.jpg",
+    imgPosition: "center",
+    link:        "https://ghemyn.itch.io/dice-fighter",
+    tags:        ["Unity", "Game Jam", "2D"],
+    languages:   ["C#"],
+    domain:      "Games",
+    size:        "normal",
+    role:        "Game developer",
+    metric:      { label: "Dev time", value: "48 hours" },
+    year:        "2022",
+  },
+  {
     name:        "Pico Matrix Studio",
     filename:    "ws2812.rs",
     langColor:   "#dea584",
