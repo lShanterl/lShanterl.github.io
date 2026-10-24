@@ -54,7 +54,6 @@ export default function Footer() {
           <span className="kw">const</span>
           {' year = '}
           <span className="str">{year}</span>
-          {'  © Bartosz Starzyk'}
         </motion.span>
       </motion.div>
     </footer>

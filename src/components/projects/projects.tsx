@@ -310,7 +310,7 @@ function FeaturedCard({ p }: { p: Project }) {
           )}
         </div>
 
-        <h3 className="featured-name">{p.name}</h3>
+        <h3 className="featured-name"><span className="featured-prompt">./</span>{p.name}</h3>
         <p className="featured-desc">{p.description}</p>
 
         <div className="featured-footer">

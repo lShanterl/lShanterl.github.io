@@ -80,7 +80,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-bottom: 1px solid rgba(var(--white-rgb), 0.08); 
+  border-bottom: 1px solid var(--border); 
   
   padding-top: 24px;
   padding-bottom: 24px;
@@ -142,7 +142,7 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   border-radius: 6px;
-  background: rgba(var(--white-rgb), 0.02);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
   color: var(--text-dim);
 }
@@ -176,6 +176,16 @@
 
   .about-card {
     padding: 20px;
+  }
+  .experience-item {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .experience-item:first-child {
+    padding-top: 0;
+  }
+  .experience-item:last-child {
+    padding-bottom: 0;
   }
 }
 
